@@ -12,7 +12,8 @@ class Title extends StatelessWidget {
       TextSpan(
         text: content,
         style: const TextStyle(
-          fontSize: 32
+          fontSize: 32,
+          color : Color(0xffffffff)
         )
       ),
     );
