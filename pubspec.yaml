@@ -62,26 +62,35 @@ flutter:
   fonts:
   - family: Nunito
     fonts:
-      - asset: assets\font\Nunito-Black.ttf
-      - asset: assets\font\Nunito-BlackItalic.ttf
-      - asset: assets\font\Nunito-Bold.ttf
-      - asset: assets\font\Nunito-BoldItalic.ttf
-      - asset: assets\font\Nunito-ExtraBold.ttf
-      - asset: assets\font\Nunito-ExtraBoldItalic.ttf
-      - asset: assets\font\Nunito-Light.ttf
-      - asset: assets\font\Nunito-LightItalic.ttf
-      - asset: assets\font\Nunito-ExtraLightItalic.ttf
-      - asset: assets\font\Nunito-ExtraLight.ttf
-      - asset: assets\font\Nunito-Italic.ttf
-      - asset: assets\font\Nunito-Medium.ttf
-      - asset: assets\font\Nunito-MediumItalic.ttf
-      - asset: assets\font\Nunito-Regular.ttf
-      - asset: assets\font\Nunito-SemiBold.ttf
-      - asset: assets\font\Nunito-SemiBoldItalic.ttf
+      - asset: assets/font/Nunito-Black.ttf
+      - asset: assets/font/Nunito-BlackItalic.ttf
+      - asset: assets/font/Nunito-Bold.ttf
+      - asset: assets/font/Nunito-BoldItalic.ttf
+      - asset: assets/font/Nunito-ExtraBold.ttf
+      - asset: assets/font/Nunito-ExtraBoldItalic.ttf
+      - asset: assets/font/Nunito-Light.ttf
+      - asset: assets/font/Nunito-LightItalic.ttf
+      - asset: assets/font/Nunito-ExtraLightItalic.ttf
+      - asset: assets/font/Nunito-ExtraLight.ttf
+      - asset: assets/font/Nunito-Italic.ttf
+      - asset: assets/font/Nunito-Medium.ttf
+      - asset: assets/font/Nunito-MediumItalic.ttf
+      - asset: assets/font/Nunito-Regular.ttf
+      - asset: assets/font/Nunito-SemiBold.ttf
+      - asset: assets/font/Nunito-SemiBoldItalic.ttf
 
   assets:
-    - assets\font
-    - assets\svg
+    - assets\svg\ic_books_bicolor.svg
+    - assets\svg\ic_calendar_bicolor.svg
+    - assets\svg\ic_calendar_bicolor.svg
+    - assets\svg\ic_movie_bicolor.svg
+    - assets\svg\ic_publisher_bicolor.svg
+    - assets\svg\ic_tv_bicolor.svg
+    - assets\svg\navbar_comics.svg
+    - assets\svg\navbar_home.svg
+    - assets\svg\navbar_movies.svg
+    - assets\svg\navbar_search.svg
+    - assets\svg\navbar_series.svg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
