@@ -46,7 +46,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -63,21 +63,45 @@ flutter:
   - family: Nunito
     fonts:
       - asset: assets/font/Nunito-Black.ttf
+        weight: 900
       - asset: assets/font/Nunito-BlackItalic.ttf
+        weight: 900
+        style: italic
       - asset: assets/font/Nunito-Bold.ttf
+        weight: 700
       - asset: assets/font/Nunito-BoldItalic.ttf
+        weight: 700
+        style: italic
       - asset: assets/font/Nunito-ExtraBold.ttf
+        weight: 800
       - asset: assets/font/Nunito-ExtraBoldItalic.ttf
+        weight: 800
+        style: italic
       - asset: assets/font/Nunito-Light.ttf
+        weight: 300
       - asset: assets/font/Nunito-LightItalic.ttf
+        weight: 300
+        style: italic
       - asset: assets/font/Nunito-ExtraLightItalic.ttf
+        weight: 200
+        style: italic
       - asset: assets/font/Nunito-ExtraLight.ttf
+        weight: 200
       - asset: assets/font/Nunito-Italic.ttf
+        weight: 400
+        style: italic
       - asset: assets/font/Nunito-Medium.ttf
+        weight: 500
       - asset: assets/font/Nunito-MediumItalic.ttf
+        weight: 500
+        style: italic
       - asset: assets/font/Nunito-Regular.ttf
+        weight: 400
       - asset: assets/font/Nunito-SemiBold.ttf
+        weight: 600
       - asset: assets/font/Nunito-SemiBoldItalic.ttf
+        weight: 600
+        style: italic
 
   assets:
     - assets\svg\ic_books_bicolor.svg
@@ -91,6 +115,7 @@ flutter:
     - assets\svg\navbar_movies.svg
     - assets\svg\navbar_search.svg
     - assets\svg\navbar_series.svg
+    - assets\images\image1.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
