@@ -55,6 +55,7 @@ class DescriptionSection extends StatelessWidget {
       ),
       child: Text(
         description,
+        maxLines: 2,
         style: const TextStyle(
           color: textColor,
           fontFamily: 'Nunito',

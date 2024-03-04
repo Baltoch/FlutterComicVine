@@ -116,6 +116,7 @@ flutter:
     - assets\svg\navbar_search.svg
     - assets\svg\navbar_series.svg
     - assets\images\image1.jpg
+    - assets\images\image2.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
