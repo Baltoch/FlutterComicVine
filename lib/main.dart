@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return const CardTemplate(
       imagePath: 'assets/images/image2.jpg',
-      description: 'Wonder Woman #89 -Home',
+      description: 'Wonder Woman #89 - Home',
     );
   }
 }

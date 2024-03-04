@@ -49,10 +49,6 @@ class DescriptionSection extends StatelessWidget {
       width: containerWidth,
       height: containerHeight,
       padding: EdgeInsets.zero,
-      margin: const EdgeInsets.only(
-        left: 11,
-        bottom: 9,
-      ),
       child: Text(
         description,
         maxLines: 2,
@@ -76,7 +72,7 @@ class CardTemplate extends StatelessWidget {
   static const double cardWidth = 180;
   static const double cardHeight = 242;
   static const double cardBorderRadius = 10;
-  static const Color cardBackgroundColor = Color(0xFF1E3243);
+  static const Color cardBackgroundColor = Color(0xFF284C6A);
   static const double imageBorderRadius = 10;
 
   final String imagePath;
@@ -98,7 +94,9 @@ class CardTemplate extends StatelessWidget {
           children: <Widget>[
             ImageSection(image: imagePath),
             const SizedBox(height: 12),
-            DescriptionSection(description: description),
+            Align(
+              child: DescriptionSection(description: description),
+            ),
           ],
         ),
       ),
