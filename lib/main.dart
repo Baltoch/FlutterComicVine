@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        fontFamily: 'Nunito',
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -35,6 +34,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const CardTemplate(imageUrl: 'assets/images/image1.jpg');
+    return const CardTemplate(
+      imagePath: 'assets/images/image1.jpg',
+      description: 'Salut',
+    );
   }
 }

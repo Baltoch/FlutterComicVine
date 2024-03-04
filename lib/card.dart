@@ -1,16 +1,11 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
-enum CardType {
-  movie,
-  serie,
-  comic,
-  character;
-}
+// enum CardType {
+//   movie,
+//   serie,
+//   comic,
+//   character;
+// }
 
 class ImageSection extends StatelessWidget {
   const ImageSection({super.key, required this.image});
@@ -31,14 +26,51 @@ class ImageSection extends StatelessWidget {
         image,
         width: imageWidth,
         height: imageHeight,
-        fit: BoxFit.cover,
+        fit: BoxFit.fill,
+      ),
+    );
+  }
+}
+
+class DescriptionSection extends StatelessWidget {
+  const DescriptionSection({super.key, required this.description});
+
+  final String description;
+
+  static const Color textColor = Colors.white;
+  static const double fontSizeText = 16;
+  static const FontWeight fontWeightText = FontWeight.w400;
+  static const double containerWidth = 156;
+  static const double containerHeight = 44;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: containerWidth,
+      height: containerHeight,
+      padding: EdgeInsets.zero,
+      margin: const EdgeInsets.only(
+        left: 11,
+        bottom: 9,
+      ),
+      child: Text(
+        description,
+        style: const TextStyle(
+          color: textColor,
+          fontFamily: 'Nunito',
+          fontSize: fontSizeText,
+          fontWeight: fontWeightText,
+          overflow: TextOverflow.ellipsis,
+          decoration: TextDecoration.none,
+        ),
       ),
     );
   }
 }
 
 class CardTemplate extends StatelessWidget {
-  const CardTemplate({super.key, required this.imageUrl});
+  const CardTemplate(
+      {super.key, required this.imagePath, required this.description});
 
   static const double cardWidth = 180;
   static const double cardHeight = 242;
@@ -46,7 +78,8 @@ class CardTemplate extends StatelessWidget {
   static const Color cardBackgroundColor = Color(0xFF1E3243);
   static const double imageBorderRadius = 10;
 
-  final String imageUrl;
+  final String imagePath;
+  final String description;
   // final Map<String, String> description;
   // final CardType type;
 
@@ -62,13 +95,9 @@ class CardTemplate extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            ImageSection(image: imageUrl),
-            const SizedBox(height: 15),
-            const Text('Salut',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                )),
+            ImageSection(image: imagePath),
+            const SizedBox(height: 12),
+            DescriptionSection(description: description),
           ],
         ),
       ),
