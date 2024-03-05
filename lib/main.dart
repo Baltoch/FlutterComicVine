@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/card.dart';
+import 'package:fluttercomicvine/slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,9 +35,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const CardTemplate(
-      imagePath: 'assets/images/image2.jpg',
-      description: 'Wonder Woman #89 - Home',
-    );
+    return const CardSlider();
   }
 }
