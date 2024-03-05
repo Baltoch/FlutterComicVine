@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/card.dart';
 
 class CardSlider extends StatelessWidget {
   const CardSlider({super.key});

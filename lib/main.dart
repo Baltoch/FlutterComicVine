@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/card.dart';
 import 'package:fluttercomicvine/slider.dart';
 
 void main() {
