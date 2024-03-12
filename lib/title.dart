@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Title extends StatelessWidget {
+class AppTitle extends StatelessWidget {
 
-  const Title({super.key, required this.content});
+  const AppTitle({super.key, required this.content});
 
   final String content;
 
