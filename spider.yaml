@@ -1,0 +1,8 @@
+no_comments: true
+package: svg
+
+groups:
+  - path: assets\svg
+    class_name: AppVectorialImages
+    package: svg
+    types: [.svg ]
