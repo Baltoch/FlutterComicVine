@@ -12,8 +12,10 @@ class AppTitle extends StatelessWidget {
       TextSpan(
         text: content,
         style: const TextStyle(
-          fontSize: 32,
-          color : Color(0xffffffff)
+          fontSize: 30,
+          fontWeight: FontWeight.w700,
+          color : Colors.white,
+          fontFamily: 'Nunito'
         )
       ),
     );
