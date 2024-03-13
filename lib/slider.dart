@@ -35,8 +35,6 @@ class SliderTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: containerWidth,
-      height: containerHeight,
       padding: EdgeInsets.zero,
       child: Row(
         children: <Widget>[
@@ -106,26 +104,67 @@ class SeeMoreButton extends StatelessWidget {
 }
 
 class CardSlider extends StatelessWidget {
-  const CardSlider({super.key, required this.title});
+  const CardSlider({super.key, required this.title, required this.hasButton});
 
   final String title;
+  final bool hasButton;
 
   static const double sliderWidth = 424;
   static const double sliderHeight = 329;
   static const double sliderBorderRadius = 20;
   static const Color sliderBackgroundColor = Color(0xFF1E3243);
 
+  Widget header({required bool hasButton, required String title}) {
+    if (hasButton) {
+      return Padding(
+        padding: const EdgeInsetsDirectional.symmetric(horizontal: 17),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(child: SliderTitle(content: title)),
+            const SeeMoreButton(),
+          ],
+        ),
+      );
+    } else {
+      return Padding(
+        padding: const EdgeInsets.only(left: 17),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: SliderTitle(content: title),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: sliderWidth,
         height: sliderHeight,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(sliderBorderRadius)),
           color: sliderBackgroundColor,
         ),
-        child: const SeeMoreButton(),
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 22),
+            header(hasButton: hasButton, title: title),
+            Expanded(
+              child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                        padding: EdgeInsetsDirectional.only(
+                            start: index == 0 ? 10 : 0),
+                        child: cardItem[index]);
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const SizedBox(width: 10),
+                  itemCount: cardItem.length),
+            ),
+          ],
+        ),
       ),
     );
   }

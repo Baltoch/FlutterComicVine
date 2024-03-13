@@ -26,7 +26,7 @@ class ImageSection extends StatelessWidget {
         image,
         width: imageWidth,
         height: imageHeight,
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     );
   }
