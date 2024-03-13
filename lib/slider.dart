@@ -103,18 +103,14 @@ class SeeMoreButton extends StatelessWidget {
   }
 }
 
-class CardSlider extends StatelessWidget {
-  const CardSlider({super.key, required this.title, required this.hasButton});
+class Header extends StatelessWidget {
+  const Header({super.key, required this.hasButton, required this.title});
 
   final String title;
   final bool hasButton;
 
-  static const double sliderWidth = 424;
-  static const double sliderHeight = 329;
-  static const double sliderBorderRadius = 20;
-  static const Color sliderBackgroundColor = Color(0xFF1E3243);
-
-  Widget header({required bool hasButton, required String title}) {
+  @override
+  Widget build(BuildContext context) {
     if (hasButton) {
       return Padding(
         padding: const EdgeInsetsDirectional.symmetric(horizontal: 17),
@@ -136,6 +132,18 @@ class CardSlider extends StatelessWidget {
       );
     }
   }
+}
+
+class CardSlider extends StatelessWidget {
+  const CardSlider({super.key, required this.title, required this.hasButton});
+
+  final String title;
+  final bool hasButton;
+
+  static const double sliderWidth = 424;
+  static const double sliderHeight = 329;
+  static const double sliderBorderRadius = 20;
+  static const Color sliderBackgroundColor = Color(0xFF1E3243);
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +157,7 @@ class CardSlider extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const SizedBox(height: 22),
-            header(hasButton: hasButton, title: title),
+            Header(hasButton: hasButton, title: title),
             Expanded(
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
