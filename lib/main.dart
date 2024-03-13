@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttercomicvine/information.dart';
 import 'package:fluttercomicvine/slider.dart';
 
 void main() {
@@ -34,6 +35,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const CardSlider(hasButton: true, title: "Personnages");
+    return const Information(
+        title: 'Recettes brutes totales cccccccc',
+        description: '185 millions \$');
   }
 }
