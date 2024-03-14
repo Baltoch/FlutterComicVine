@@ -5,7 +5,7 @@ class Information extends StatelessWidget {
       {super.key, required this.title, required this.description});
 
   final String title;
-  final String description;
+  final List<String> description;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,7 @@ class Information extends StatelessWidget {
         child: Expanded(
             child: Text(
           title,
+          maxLines: 2,
           style: const TextStyle(
             color: Colors.white,
             fontFamily: 'Nunito',
@@ -24,16 +25,21 @@ class Information extends StatelessWidget {
           ),
         )),
       ),
-      Text(
-        description,
-        maxLines: 2,
-        style: const TextStyle(
-          color: Colors.white,
-          fontFamily: 'Nunito',
-          fontSize: 17,
-          fontWeight: FontWeight.w400,
-          decoration: TextDecoration.none,
-        ),
+      Expanded(
+        child: ListView.builder(
+            itemCount: description.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Text(
+                description[index],
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Nunito',
+                  fontSize: 17,
+                  fontWeight: FontWeight.w400,
+                  decoration: TextDecoration.none,
+                ),
+              );
+            }),
       )
     ]);
   }

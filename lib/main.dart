@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/information.dart';
-import 'package:fluttercomicvine/slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,11 +31,16 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+const List<String> name = [
+  'Paul Valerie GOMA',
+  'Henria Lorinne MABIKA GOMA',
+  'Henri Emmanuel MABIKA GOMA'
+];
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return const Information(
-        title: 'Recettes brutes totales cccccccc',
-        description: '185 millions \$');
+        title: 'Recettes dans le busness game', description: name);
   }
 }
