@@ -62,7 +62,8 @@ class MyRawInfo extends StatelessWidget {
                             "  Marvel",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 17
+                              fontSize: 17,
+                              
                             ),)
                             ]
                             ),
