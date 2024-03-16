@@ -21,13 +21,12 @@ To get started with FlutterComicVine, follow these steps:
    flutter pub get
    ```
 
-4. **Launch the App**:
-    You can launch the app by : 
-    - Running the following command in your terminal:
+4. **Launch the App**: 
+    - Running the following command in your terminal will launch the app:
         ```
         flutter run
         ```
-    - Open the `main.dart` file located at `./lib/main.dart` and running the app using your preferred Flutter development environment (e.g., Android Studio, VSCode)
+    - Alternatively, you can open the `main.dart` file located at `./lib/main.dart` and run the app using your preferred Flutter development environment (e.g., Android Studio, VSCode)
 
 ## Features
 
