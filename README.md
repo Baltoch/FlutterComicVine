@@ -1,16 +1,47 @@
-# fluttercomicvine
+# FlutterComicVine
 
-Projet de développement mobile en Flutter
+Welcome to FlutterComicVine! This is the first app developed by our group of students under the guidance and design provided by our professor. The app is based on the Comic Vine API and allows users to browse through comics, films, and series related content.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get started with FlutterComicVine, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+1. **Clone the Repository**: 
+   ```
+   git clone https://github.com/Baltoch/FlutterComicVine.git
+   ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. **Navigate to the Project Directory**:
+   ```
+   cd FlutterComicVine
+   ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. **Install Dependencies**:
+   ```
+   flutter pub get
+   ```
+
+4. **Launch the App**: 
+    - Running the following command in your terminal will launch the app:
+        ```
+        flutter run
+        ```
+    - Alternatively, you can open the `main.dart` file located at `./lib/main.dart` and run the app using your preferred Flutter development environment (e.g., Android Studio, VSCode)
+
+## Features
+
+- Browse through comics, films, and series.
+- View details of individual comics, films, and series.
+- Search for specific comics, films, or series.
+
+## Contributing
+
+We welcome contributions from anyone interested in improving FlutterComicVine. If you have any suggestions, feature requests, or bug reports, please open an issue on GitHub. Pull requests are also encouraged.
+
+## Credits
+
+- Professor [Edouard MARQUEZ](https://github.com/g123k)
+- Students:
+  - [Baptiste MALAVERGNE](https://github.com/BaptisteMalavergne)
+  - [Paul Valerie GOMA](https://github.com/PaulGOMA)
+  - [Balthazar LEBRETON](https://github.com/Baltoch)
