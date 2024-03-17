@@ -12,7 +12,7 @@ class MyBackButton extends StatelessWidget {
       body: Center(
         child: Container(
           height: 100,
-          width: 250,
+          width: 300,
           decoration: BoxDecoration(
             color: Colors.transparent,
           ),
@@ -28,6 +28,7 @@ class MyBackButton extends StatelessWidget {
             style: TextStyle(
               color: Colors.red,
               fontSize: 39,
+              fontFamily: 'Nunito',
             ),
             )
           ]
