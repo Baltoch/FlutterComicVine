@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/main.dart';
 import 'appcolors.dart';
 
-class MyEpisode extends StatelessWidget {
-  const MyEpisode({super.key});
+class Episode extends StatelessWidget {
+  const Episode({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,9 @@ class MyEpisode extends StatelessWidget {
                         "Episode #101",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30),
+                          fontSize: 30,
+                          fontFamily: 'Nunito'),
+                          
                       ),
                       Text(
                         "Pilot",
@@ -54,7 +56,8 @@ class MyEpisode extends StatelessWidget {
                         TextStyle (
                           fontStyle: FontStyle.italic,
                           color: Colors.white,
-                          fontSize: 20),
+                          fontSize: 20,
+                          fontFamily: 'Nunito'),
                         
                       ),
                       Padding(
@@ -70,7 +73,8 @@ class MyEpisode extends StatelessWidget {
                             "  06 Mars 2024",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 17
+                              fontSize: 17,
+                              fontFamily: 'Nunito'
                             ),)
                         ],)
                       )
