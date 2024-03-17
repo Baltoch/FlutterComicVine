@@ -63,6 +63,7 @@ class MyRawInfo extends StatelessWidget {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
+                              fontFamily: 'Nunito',
                               
                             ),)
                             ]
@@ -79,7 +80,9 @@ class MyRawInfo extends StatelessWidget {
                             "  136 épisodes",
                             style: TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 17
+                              fontSize: 17,
+                              fontFamily: 'Nunito',
+
                             ),)
 
                               ],),
@@ -95,7 +98,8 @@ class MyRawInfo extends StatelessWidget {
                             "  2013",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 17
+                              fontSize: 17,
+                              fontFamily: 'Nunito',
                             ),)
 
                               ],)
