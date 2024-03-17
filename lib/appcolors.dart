@@ -21,5 +21,6 @@ class AppColors {
   static const darkOrange = Color(0xFF341100);
   static const navtext = Color(0xFF728CAB);
   static const white = Color(0xFFFFFFFF);
+  static const white50 = Color(0x7FFFFFFF);
   static const transparent = Color(0x00FFFFFF);
 }

@@ -3,6 +3,7 @@ import './title.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'appcolors.dart';
 import 'tabs.dart';
+import 'searchbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -95,14 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: const Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Tabs(
-              header: ["Histoire", "Personnages", "Episodes"], 
-              content: [
-                Text("Histoire"),
-                Text("Personnages"),
-                Text("Episodes")
-              ]
-            )
+        child: Column(
+          children: <Widget>[
+            AppSearchBar()
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
