@@ -10,18 +10,23 @@ class Popular extends StatelessWidget {
     return Scaffold(
       body: Center(
         child : Stack (
-          children :  [Container
-        (
-          height: 200,
-          width: 500,
-          decoration: BoxDecoration
+          children :  [
+            Container(
+              height: 200,
+              width: 500,
+              decoration: BoxDecoration
           (
                 color: AppColors.cardElementBackgroundColor,
                 borderRadius: BorderRadius.circular(30),
           ),
+          
+         
           alignment: Alignment.centerLeft,
-          child:  Row(
-            children: [
+          child:  Stack(
+            children : [
+              Row(
+                children: [
+              
               Expanded(
                 flex: 2,
                 child : Padding (
@@ -49,10 +54,12 @@ class Popular extends StatelessWidget {
                         "Agents of shield",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 30),
+                          fontSize: 20,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.bold ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 20),
+                        padding: EdgeInsets.only(top: 30),
                         child : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -68,7 +75,8 @@ class Popular extends StatelessWidget {
                             "  Marvel",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 17
+                              fontSize: 17,
+                              fontFamily: 'Nunito'
                             ),)
                             ]
                             ),
@@ -83,7 +91,8 @@ class Popular extends StatelessWidget {
                             "  136 épisodes",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 17
+                              fontSize: 17,
+                              fontFamily: 'Nunito'
                             ),)
 
                               ],),
@@ -99,7 +108,8 @@ class Popular extends StatelessWidget {
                             "  2013",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 17
+                              fontSize: 17,
+                              fontFamily: 'Nunito'
                             ),)
 
                               ],)
@@ -113,22 +123,50 @@ class Popular extends StatelessWidget {
               ),
               )
             
-            ]
-    ),
-    ),
-    /*Positioned(
-      top: 10,
-      left: 10,
-      Container (alignment: 
-      width: 50,
-      height: 50,
-      color: Colors.red,)
+            ]),
 
-    )*/
+
+            Positioned(
+                    top: 10, 
+                    left: 10, 
+                    child : Stack(
+                      children : [
+                        Container(
+                          width: 70,
+                          height: 50,
+                          decoration: BoxDecoration
+                          (
+                            color: AppColors.orange,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          
+                        ),
+                        
+                        Text("  #1",
+                        
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontFamily: 'Nunito',
+                              fontWeight: FontWeight.bold
+                            ),
+                            textAlign: TextAlign.center
+                            )
+                            
+                      ],
+                    
+                    
+                  ),
+            )
+    
+            ],
+    ),
+    
+            )
+      
           ]
-        )
         
     )
-    );
+    ),);
   }
 }
