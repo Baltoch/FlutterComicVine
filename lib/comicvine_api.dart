@@ -8,7 +8,7 @@ part 'comicvine_api.g.dart';
 abstract class ComicVineAPI {
   factory ComicVineAPI(Dio dio, {required String baseUrl}) = _ComicVineAPI;
 
-  // https://comicvine.gamespot.com/api/characters?api_key=ac0e4b56140119e1bf5433a18cbd8d63772bac5c&format=json&limit=20
+  // https://comicvine.gamespot.com/api/issues/?api_key=8b4409f69ab868bcc3cbbe34dd52b3e19db555fd&format=json
   @GET('characters')
   Future<ComicVineCharactersResponse> loadCharacters(
       {@Query('limit') int limit = 20});
@@ -27,7 +27,7 @@ class ComicVineRequests {
   final ComicVineAPI _api = ComicVineAPI(
     Dio(
       BaseOptions(queryParameters: {
-        'api_key': 'ac0e4b56140119e1bf5433a18cbd8d63772bac5c',
+        'api_key': '8b4409f69ab868bcc3cbbe34dd52b3e19db555fd',
         'format': 'json',
       }),
     ),
