@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/main.dart';
 import 'appcolors.dart';
 
 class MyBackButton extends StatelessWidget {
@@ -13,10 +12,10 @@ class MyBackButton extends StatelessWidget {
         child: Container(
           height: 100,
           width: 300,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.transparent,
           ),
-        child: Row(
+        child: const Row(
           children: [
             Icon(
               Icons.arrow_back_ios,
