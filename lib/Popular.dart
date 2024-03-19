@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/main.dart';
 import 'appcolors.dart';
 
 class Popular extends StatelessWidget {
