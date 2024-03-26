@@ -6,9 +6,8 @@ class MyBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold
+    return  Center
     (
-      body: Center(
         child: Container(
           height: 100,
           width: 300,
@@ -19,20 +18,19 @@ class MyBackButton extends StatelessWidget {
           children: [
             Icon(
               Icons.arrow_back_ios,
-              color: Colors.red,
+              color: Color.fromARGB(255, 255, 255, 255),
               size: 35,
             ),
             Text(
             'Titre du film',
             style: TextStyle(
-              color: Colors.red,
+              color: Color.fromARGB(255, 255, 255, 255),
               fontSize: 39,
               fontFamily: 'Nunito',
             ),
             )
           ]
           )
-        )
       )
     );
   }

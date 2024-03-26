@@ -6,8 +6,7 @@ class Popular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
         child : Stack (
           children :  [
             Container(
@@ -32,13 +31,7 @@ class Popular extends StatelessWidget {
                   padding: EdgeInsets.all(20), 
                   child : ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child : Image(
-                    image : AssetImage('image.jpeg'),
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: 200,
-                    
-                  ),))
+                  ))
                 
                 ),
               Expanded(
@@ -166,6 +159,6 @@ class Popular extends StatelessWidget {
           ]
         
     )
-    ),);
+    ,);
   }
 }
