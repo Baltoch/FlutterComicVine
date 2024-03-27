@@ -3,12 +3,15 @@ import 'package:fluttercomicvine/main.dart';
 import 'appcolors.dart';
 
 class Episode extends StatelessWidget {
-  const Episode({super.key});
+  const Episode({super.key, required this.content, required this.title, required this.date, required this.imageURL});
 
+  final String content;
+  final String title;
+  final String date;
+  final String imageURL;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
         child: Container
         (
           height: 200,
@@ -27,11 +30,17 @@ class Episode extends StatelessWidget {
                   padding: EdgeInsets.all(20), 
                   child : ClipRRect(
                   borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    imageURL,
+                    fit: BoxFit.cover,
+      ),
+                  /*
                   child : Image(
                     image : AssetImage('image.jpeg'),
                     fit: BoxFit.cover,
                     
-                  ),))
+                  ),*/
+                  ))
                 
                 ),
               Expanded(
@@ -43,7 +52,7 @@ class Episode extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children : [
                       Text(
-                        "Episode #101",
+                        content,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -51,7 +60,7 @@ class Episode extends StatelessWidget {
                           
                       ),
                       Text(
-                        "Pilot",
+                        title,
                         style: 
                         TextStyle (
                           fontStyle: FontStyle.italic,
@@ -70,7 +79,7 @@ class Episode extends StatelessWidget {
                             size: 20,
                           ),
                           Text(
-                            "  06 Mars 2024",
+                            date,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -86,7 +95,7 @@ class Episode extends StatelessWidget {
             ]
     )
     )
-    )
+    
     );
   }
 }
