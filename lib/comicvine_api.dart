@@ -14,13 +14,13 @@ abstract class ComicVineAPI {
       {@Query('limit') int limit = 20});
 
   @GET('issues')
-  Future<ComicVineIssuesResponse> loadIssues({@Query('limit') int limit = 20});
+  Future<ComicVineIssuesResponse> loadIssues({@Query('limit') int limit = 50});
 
   @GET('movies')
-  Future<ComicVineMoviesResponse> loadMovies({@Query('limit') int limit = 20});
+  Future<ComicVineMoviesResponse> loadMovies({@Query('limit') int limit = 50});
 
   @GET('series_list')
-  Future<ComicVineSeriesResponse> loadSeries({@Query('limit') int limit = 20});
+  Future<ComicVineSeriesResponse> loadSeries({@Query('limit') int limit = 50});
 }
 
 class ComicVineRequests {
