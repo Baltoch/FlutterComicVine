@@ -42,7 +42,7 @@ class _ComicVineAPI implements ComicVineAPI {
   }
 
   @override
-  Future<ComicVineIssuesResponse> loadIssues({int limit = 20}) async {
+  Future<ComicVineIssuesResponse> loadIssues({int limit = 50}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'limit': limit};
     final _headers = <String, dynamic>{};
@@ -65,7 +65,7 @@ class _ComicVineAPI implements ComicVineAPI {
   }
 
   @override
-  Future<ComicVineMoviesResponse> loadMovies({int limit = 20}) async {
+  Future<ComicVineMoviesResponse> loadMovies({int limit = 50}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'limit': limit};
     final _headers = <String, dynamic>{};
@@ -88,7 +88,7 @@ class _ComicVineAPI implements ComicVineAPI {
   }
 
   @override
-  Future<ComicVineSeriesResponse> loadSeries({int limit = 20}) async {
+  Future<ComicVineSeriesResponse> loadSeries({int limit = 50}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'limit': limit};
     final _headers = <String, dynamic>{};

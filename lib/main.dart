@@ -42,7 +42,7 @@ class ComicVineRequestTester extends StatelessWidget {
           } else if (!req.hasData) {
             return const CircularProgressIndicator();
           } else {
-            return Text('OK : ${req.data!.results.map((e) => e.name)}');
+            return Text('${req.data!.results.map((e) => e.name)}');
           }
         },
       ),
