@@ -18,7 +18,7 @@ class Episode extends StatelessWidget {
           width: 500,
           decoration: BoxDecoration
           (
-                color: AppColors.cardElementBackgroundColor,
+                color: AppColors.blueBlue,
                 borderRadius: BorderRadius.circular(30),
           ),
           alignment: Alignment.centerLeft,
