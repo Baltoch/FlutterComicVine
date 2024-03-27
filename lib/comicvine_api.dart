@@ -12,6 +12,9 @@ abstract class ComicVineAPI {
   @GET('characters')
   Future<ComicVineCharactersResponse> loadCharacters(
       {@Query('limit') int limit = 20});
+
+  @GET('issues')
+  Future<ComicVineIssuesResponse> loadIssues({@Query('limit') int limit = 20});
 }
 
 class ComicVineRequests {
@@ -37,6 +40,15 @@ class ComicVineRequests {
   Future<ComicVineCharactersResponse> getCharacters() {
     try {
       return _api.loadCharacters(limit: 20);
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<ComicVineIssuesResponse> getIssues() {
+    try {
+      return _api.loadIssues(limit: 20);
     } catch (e) {
       print(e);
       rethrow;

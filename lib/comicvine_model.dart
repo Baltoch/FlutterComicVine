@@ -33,3 +33,35 @@ class ComicVineCharacter {
 
   Map<String, dynamic> toJson() => _$ComicVineCharacterToJson(this);
 }
+
+@JsonSerializable()
+class ComicVineIssuesResponse {
+  @JsonKey(name: 'results')
+  final List<ComicVineIssue> results;
+
+  ComicVineIssuesResponse(this.results);
+
+  factory ComicVineIssuesResponse.fromJson(Map<String, dynamic> json) =>
+      _$ComicVineIssuesResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ComicVineIssuesResponseToJson(this);
+}
+
+@JsonSerializable()
+class ComicVineIssue {
+  @JsonKey(name: 'name')
+  final String? name;
+
+  @JsonKey(name: 'issue_number')
+  final String? issueNumber;
+
+  @JsonKey(name: 'image')
+  final Map<String, dynamic>? image;
+
+  ComicVineIssue(this.name, this.issueNumber, this.image);
+
+  factory ComicVineIssue.fromJson(Map<String, dynamic> json) =>
+      _$ComicVineIssueFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ComicVineIssueToJson(this);
+}
