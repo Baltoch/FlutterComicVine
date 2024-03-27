@@ -2,22 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/main.dart';
 import 'appcolors.dart';
 
-class MyRawInfo extends StatelessWidget {
-  const MyRawInfo ({super.key});
+class RawInfo extends StatelessWidget {
+  const RawInfo ({super.key, required this.edition, required this.date, required this.nbEpisodes, required this.imageURL});
+
+  final String imageURL;
+  final String edition;
+  final String date;
+  final String nbEpisodes;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
         child : Stack (
           children : [Container
         (
-          height: 200,
+          height: 150,
           width: 500,
           decoration: BoxDecoration
           (
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(30),
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(20),
           ),
           alignment: Alignment.centerLeft,
           child:  Row(
@@ -27,16 +31,14 @@ class MyRawInfo extends StatelessWidget {
                 
                   child : ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child : const Image(
-                    image : AssetImage('image.jpeg'),
+                  child : Image.network(
+                    imageURL,
                     fit: BoxFit.cover,
-                    height: 200,
-                    width: 200,
                     
                   ),))
                 
                 ,
-              const Expanded (
+              Expanded (
                 flex: 2,
                 child : Padding(
                   padding: EdgeInsets.only(left: 20),
@@ -59,7 +61,7 @@ class MyRawInfo extends StatelessWidget {
                             size: 20,
                           ),
                           Text(
-                            "  Marvel",
+                            edition,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -77,7 +79,7 @@ class MyRawInfo extends StatelessWidget {
                             size: 20,
                           ),
                           Text(
-                            "  136 épisodes",
+                            nbEpisodes,
                             style: TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255),
                               fontSize: 17,
@@ -95,7 +97,7 @@ class MyRawInfo extends StatelessWidget {
                             size: 20,
                           ),
                           Text(
-                            "  2013",
+                            date,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -123,7 +125,7 @@ class MyRawInfo extends StatelessWidget {
         ]
         )
         
-    )
+    
     );
   }
 }
