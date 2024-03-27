@@ -35,15 +35,15 @@ class ComicVineRequestTester extends StatelessWidget {
         title: Text('ComicVine API'),
       ),
       body: FutureBuilder(
-        future: ComicVineRequests().getCharacters(),
-        builder: (_, AsyncSnapshot<ComicVineCharactersResponse> req) {
+        future: ComicVineRequests().getIssues(),
+        builder: (_, AsyncSnapshot<ComicVineIssuesResponse> req) {
           if (req.hasError) {
             return Text('Une erreur est survenue : ${req.error}');
           } else if (!req.hasData) {
             return const CircularProgressIndicator();
           } else {
             return Text(
-                'OK : ${req.data!.results.map((e) => e.image?['icon_url'])}');
+                'OK : ${req.data!.results.map((e) => e.image?['small_url'])}');
           }
         },
       ),
