@@ -53,6 +53,8 @@ ComicVineIssue _$ComicVineIssueFromJson(Map<String, dynamic> json) =>
       json['name'] as String?,
       json['issue_number'] as String?,
       json['image'] as Map<String, dynamic>?,
+      json['volume'] as Map<String, dynamic>?,
+      json['description'] as String?,
     );
 
 Map<String, dynamic> _$ComicVineIssueToJson(ComicVineIssue instance) =>
@@ -60,6 +62,8 @@ Map<String, dynamic> _$ComicVineIssueToJson(ComicVineIssue instance) =>
       'name': instance.name,
       'issue_number': instance.issueNumber,
       'image': instance.image,
+      'volume': instance.volume,
+      'description': instance.description,
     };
 
 ComicVineMoviesResponse _$ComicVineMoviesResponseFromJson(

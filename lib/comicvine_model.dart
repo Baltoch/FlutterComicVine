@@ -2,6 +2,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'comicvine_model.g.dart';
 
+//-------------------------Personnages---------------------------//
+
 @JsonSerializable()
 class ComicVineCharactersResponse {
   @JsonKey(name: 'results')
@@ -34,6 +36,8 @@ class ComicVineCharacter {
   Map<String, dynamic> toJson() => _$ComicVineCharacterToJson(this);
 }
 
+//-------------------------Comics---------------------------//
+
 @JsonSerializable()
 class ComicVineIssuesResponse {
   @JsonKey(name: 'results')
@@ -49,6 +53,7 @@ class ComicVineIssuesResponse {
 
 @JsonSerializable()
 class ComicVineIssue {
+  //Card props
   @JsonKey(name: 'name')
   final String? name;
 
@@ -57,14 +62,26 @@ class ComicVineIssue {
 
   @JsonKey(name: 'image')
   final Map<String, dynamic>? image;
+  //To get the same image as shown in the sketch, use this this command : image?['small_url']
 
-  ComicVineIssue(this.name, this.issueNumber, this.image);
+  @JsonKey(name: 'volume')
+  final Map<String, dynamic>? volume;
+  // Here we need the "name" attribute of the "Volume" object, so to get that use this command : volume?['name']
+
+  //"Histoire" props
+  @JsonKey(name: 'description')
+  final String? description;
+
+  ComicVineIssue(
+      this.name, this.issueNumber, this.image, this.volume, this.description);
 
   factory ComicVineIssue.fromJson(Map<String, dynamic> json) =>
       _$ComicVineIssueFromJson(json);
 
   Map<String, dynamic> toJson() => _$ComicVineIssueToJson(this);
 }
+
+//-------------------------Films---------------------------//
 
 @JsonSerializable()
 class ComicVineMoviesResponse {
@@ -97,6 +114,8 @@ class ComicVineMovie {
 
   Map<String, dynamic> toJson() => _$ComicVineMovieToJson(this);
 }
+
+//-------------------------Series---------------------------//
 
 @JsonSerializable()
 class ComicVineSeriesResponse {
