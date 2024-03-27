@@ -20,7 +20,13 @@ class ComicVineCharacter {
   @JsonKey(name: 'aliases')
   final String? aliases;
 
-  ComicVineCharacter(this.aliases);
+  @JsonKey(name: 'count_of_issue_appearances')
+  final int? countOfIssueAppearances;
+
+  @JsonKey(name: 'image')
+  final Map<String, dynamic>? image;
+
+  ComicVineCharacter(this.aliases, this.countOfIssueAppearances, this.image);
 
   factory ComicVineCharacter.fromJson(Map<String, dynamic> json) =>
       _$ComicVineCharacterFromJson(json);

@@ -23,9 +23,13 @@ Map<String, dynamic> _$ComicVineCharactersResponseToJson(
 ComicVineCharacter _$ComicVineCharacterFromJson(Map<String, dynamic> json) =>
     ComicVineCharacter(
       json['aliases'] as String?,
+      json['count_of_issue_appearances'] as int?,
+      json['image'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$ComicVineCharacterToJson(ComicVineCharacter instance) =>
     <String, dynamic>{
       'aliases': instance.aliases,
+      'count_of_issue_appearances': instance.countOfIssueAppearances,
+      'image': instance.image,
     };
