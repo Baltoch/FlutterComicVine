@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'appcolors.dart';
 
 class MyBackButton extends StatelessWidget {
-  const MyBackButton({super.key});
+  const MyBackButton({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +16,18 @@ class MyBackButton extends StatelessWidget {
           decoration: const BoxDecoration(
             color: Colors.transparent,
           ),
-        child: const Row(
+        child: Row(
           children: [
             Icon(
               Icons.arrow_back_ios,
               color: Color.fromARGB(255, 255, 255, 255),
-              size: 35,
+              size: 20,
             ),
             Text(
-            'Titre du film',
+            title,
             style: TextStyle(
               color: Color.fromARGB(255, 255, 255, 255),
-              fontSize: 39,
+              fontSize: 20,
               fontFamily: 'Nunito',
             ),
             )

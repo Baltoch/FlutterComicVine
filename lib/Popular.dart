@@ -2,7 +2,14 @@ import 'package:flutter/material.dart';
 import 'appcolors.dart';
 
 class Popular extends StatelessWidget {
-  const Popular ({super.key});
+  const Popular ({super.key, required this.title, required this.edition, required this.nbEpisodes, required this.date, required this.rank, required this.imageURL});
+
+  final String title;
+  final String edition;
+  final String nbEpisodes;
+  final String date;
+  final String rank;
+  final String imageURL;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +21,7 @@ class Popular extends StatelessWidget {
               width: 500,
               decoration: BoxDecoration
           (
-                color: AppColors.cardElementBackgroundColor,
+                color: AppColors.section,
                 borderRadius: BorderRadius.circular(30),
           ),
           
@@ -31,6 +38,13 @@ class Popular extends StatelessWidget {
                   padding: EdgeInsets.all(20), 
                   child : ClipRRect(
                   borderRadius: BorderRadius.circular(20),
+                  child : Image.network(
+                    imageURL,
+                    fit: BoxFit.cover,
+                    height: 200,
+                    width: 200,
+                    
+                  )
                   ))
                 
                 ),
@@ -43,7 +57,7 @@ class Popular extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children : [
                       Text(
-                        "Agents of shield",
+                        title,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -64,7 +78,7 @@ class Popular extends StatelessWidget {
                             size: 20,
                           ),
                           Text(
-                            "  Marvel",
+                            edition,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -80,7 +94,7 @@ class Popular extends StatelessWidget {
                             size: 20,
                           ),
                           Text(
-                            "  136 épisodes",
+                            nbEpisodes,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -97,7 +111,7 @@ class Popular extends StatelessWidget {
                             size: 20,
                           ),
                           Text(
-                            "  2013",
+                            date,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -132,10 +146,8 @@ class Popular extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25),
                           ),
                           
-                        ),
-                        
-                        Text("  #1",
-                        
+                          child: Text(
+                            rank,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -143,7 +155,11 @@ class Popular extends StatelessWidget {
                               fontWeight: FontWeight.bold
                             ),
                             textAlign: TextAlign.center
-                            )
+                            ),
+
+                        ),
+                        
+                        
                             
                       ],
                     
