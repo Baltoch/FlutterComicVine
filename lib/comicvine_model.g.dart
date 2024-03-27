@@ -89,3 +89,31 @@ Map<String, dynamic> _$ComicVineMovieToJson(ComicVineMovie instance) =>
       'budget': instance.budget,
       'image': instance.image,
     };
+
+ComicVineSeriesResponse _$ComicVineSeriesResponseFromJson(
+        Map<String, dynamic> json) =>
+    ComicVineSeriesResponse(
+      (json['results'] as List<dynamic>)
+          .map((e) => ComicVineSerie.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$ComicVineSeriesResponseToJson(
+        ComicVineSeriesResponse instance) =>
+    <String, dynamic>{
+      'results': instance.results,
+    };
+
+ComicVineSerie _$ComicVineSerieFromJson(Map<String, dynamic> json) =>
+    ComicVineSerie(
+      json['name'] as String?,
+      json['count_of_episodes'] as int?,
+      json['image'] as Map<String, dynamic>?,
+    );
+
+Map<String, dynamic> _$ComicVineSerieToJson(ComicVineSerie instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'count_of_episodes': instance.countOfEpisodes,
+      'image': instance.image,
+    };
