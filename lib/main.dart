@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'comicvine_model.dart';
 import 'comicvine_api.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +42,8 @@ class ComicVineRequestTester extends StatelessWidget {
           } else if (!req.hasData) {
             return const CircularProgressIndicator();
           } else {
-            return Text('OK : ${req.data!.results.map((e) => e.aliases)}');
+            return Text(
+                'OK : ${req.data!.results.map((e) => e.image?['icon_url'])}');
           }
         },
       ),
