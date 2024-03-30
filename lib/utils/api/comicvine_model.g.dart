@@ -69,9 +69,7 @@ ComicVineIssueResponse _$ComicVineIssueResponseFromJson(
         Map<String, dynamic> json) =>
     ComicVineIssueResponse(
       json['status_code'] as int?,
-      json['results'] == null
-          ? null
-          : ComicVineIssue.fromJson(json['results'] as Map<String, dynamic>),
+      ComicVineIssue.fromJson(json['results'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ComicVineIssueResponseToJson(
@@ -159,9 +157,7 @@ ComicVineMovieResponse _$ComicVineMovieResponseFromJson(
         Map<String, dynamic> json) =>
     ComicVineMovieResponse(
       json['status_code'] as int?,
-      json['results'] == null
-          ? null
-          : ComicVineMovie.fromJson(json['results'] as Map<String, dynamic>),
+      ComicVineMovie.fromJson(json['results'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ComicVineMovieResponseToJson(
@@ -280,9 +276,7 @@ ComicVineSeriesResponse _$ComicVineSeriesResponseFromJson(
         Map<String, dynamic> json) =>
     ComicVineSeriesResponse(
       json['status_code'] as int?,
-      json['results'] == null
-          ? null
-          : ComicVineSeries.fromJson(json['results'] as Map<String, dynamic>),
+      ComicVineSeries.fromJson(json['results'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ComicVineSeriesResponseToJson(
@@ -351,9 +345,7 @@ ComicVineEpisodeResponse _$ComicVineEpisodeResponseFromJson(
         Map<String, dynamic> json) =>
     ComicVineEpisodeResponse(
       json['status_code'] as int?,
-      json['results'] == null
-          ? null
-          : ComicVineEpisode.fromJson(json['results'] as Map<String, dynamic>),
+      ComicVineEpisode.fromJson(json['results'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ComicVineEpisodeResponseToJson(
@@ -385,9 +377,7 @@ ComicVinePersonResponse _$ComicVinePersonResponseFromJson(
         Map<String, dynamic> json) =>
     ComicVinePersonResponse(
       json['status_code'] as int?,
-      json['results'] == null
-          ? null
-          : ComicVinePerson.fromJson(json['results'] as Map<String, dynamic>),
+      ComicVinePerson.fromJson(json['results'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ComicVinePersonResponseToJson(
