@@ -81,7 +81,7 @@ class ComicVineIssueResponse {
   final int? statusCode;
 
   @JsonKey(name: 'results')
-  final ComicVineIssue? results;
+  final ComicVineIssue results;
 
   ComicVineIssueResponse(this.statusCode, this.results);
 
@@ -182,7 +182,7 @@ class ComicVineMovieResponse {
   final int? statusCode;
 
   @JsonKey(name: 'results')
-  final ComicVineMovie? results;
+  final ComicVineMovie results;
 
   ComicVineMovieResponse(this.statusCode, this.results);
 
@@ -321,7 +321,7 @@ class ComicVineSeriesResponse {
   final int? statusCode;
 
   @JsonKey(name: 'results')
-  final ComicVineSeries? results;
+  final ComicVineSeries results;
 
   ComicVineSeriesResponse(this.statusCode, this.results);
 
@@ -397,7 +397,7 @@ class ComicVineEpisodeResponse {
   final int? statusCode;
 
   @JsonKey(name: 'results')
-  final ComicVineEpisode? results;
+  final ComicVineEpisode results;
 
   ComicVineEpisodeResponse(this.statusCode, this.results);
 
@@ -436,7 +436,7 @@ class ComicVinePersonResponse {
   final int? statusCode;
 
   @JsonKey(name: 'results')
-  final ComicVinePerson? results;
+  final ComicVinePerson results;
 
   ComicVinePersonResponse(this.statusCode, this.results);
 
