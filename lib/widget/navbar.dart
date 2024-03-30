@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/appcolors.dart';
+import 'package:fluttercomicvine/utils/appcolors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import './svg/app_vectorial_images.dart';
+import '../svg/app_vectorial_images.dart';
 
 class NavBar extends StatelessWidget {
   final int currentPageIndex;

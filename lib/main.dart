@@ -1,13 +1,13 @@
 import 'dart:ui';
-
-import 'comicvine_model.dart';
-import 'comicvine_api.dart';
 import 'package:flutter/material.dart';
-import './title.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'appcolors.dart';
-import 'tabs.dart';
-import 'Episode.dart';
+
+import 'utils/api/comicvine_model.dart';
+import 'utils/api/comicvine_api.dart';
+import 'utils/appcolors.dart';
+import 'widget/title.dart';
+import 'widget/tabs.dart';
+import 'widget/episode.dart';
 
 void main() {
   runApp(const MyApp());
@@ -116,4 +116,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}       
+}

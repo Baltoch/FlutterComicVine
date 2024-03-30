@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:fluttercomicvine/comicvine_model.dart';
 import 'package:retrofit/retrofit.dart';
+import './comicvine_model.dart';
 
 part 'comicvine_api.g.dart';
 

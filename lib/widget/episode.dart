@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/main.dart';
-import 'appcolors.dart';
+import '../utils/appcolors.dart';
 
 class Episode extends StatelessWidget {
   const Episode({super.key, required this.content, required this.title, required this.date, required this.imageURL});

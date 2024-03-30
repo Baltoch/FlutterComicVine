@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/card.dart';
+import 'card.dart';
 
 const List<CardTemplate> cardItem = [
   CardTemplate(
