@@ -30,7 +30,7 @@ class ComicVineIssuesItem {
   final String? coverDate;
 
   @JsonKey(name: 'id')
-  final String? id;
+  final int? id;
 
   @JsonKey(name: 'image')
   final ComicVineImage? image;

@@ -35,7 +35,7 @@ ComicVineIssuesItem _$ComicVineIssuesItemFromJson(Map<String, dynamic> json) =>
           ? null
           : ComicVineVolume.fromJson(json['volume'] as Map<String, dynamic>),
       json['cover_date'] as String?,
-      json['id'] as String?,
+      json['id'] as int?,
     );
 
 Map<String, dynamic> _$ComicVineIssuesItemToJson(
