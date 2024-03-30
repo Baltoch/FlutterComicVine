@@ -22,7 +22,7 @@ class ImageSection extends StatelessWidget {
         topLeft: Radius.circular(imageBorderRadius),
         topRight: Radius.circular(imageBorderRadius),
       ),
-      child: Image.asset(
+      child: Image.network(
         image,
         width: imageWidth,
         height: imageHeight,

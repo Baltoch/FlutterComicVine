@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'appcolors.dart';
+import '../utils/appcolors.dart';
 
 class Popular extends StatelessWidget {
   const Popular ({super.key, required this.title, this.edition, this.nbEpisodes, required this.date, required this.rank, required this.imageURL, this.nomLivre, this.numeroLivre, this.duree});

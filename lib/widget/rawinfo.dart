@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/main.dart';
-import 'appcolors.dart';
+import '../utils/appcolors.dart';
 
 class RawInfo extends StatelessWidget {
   const RawInfo ({super.key,  this.edition, required this.date,  this.nbEpisodes, required this.imageURL, this.duree, this.numeroLivre, this.nomLivre});

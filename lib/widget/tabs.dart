@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/appcolors.dart';
+import 'package:fluttercomicvine/utils/appcolors.dart';
 
 class Tabs extends StatelessWidget {
   const Tabs({super.key, required this.header, required this.content});
