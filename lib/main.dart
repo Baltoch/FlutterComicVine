@@ -1,9 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'utils/api/comicvine_model.dart';
 import 'utils/api/comicvine_api.dart';
+import 'utils/bloc/episode.dart';
 import 'utils/appcolors.dart';
 import 'widget/title.dart';
 import 'widget/tabs.dart';
@@ -100,15 +102,34 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          children: <Widget>[
-            Episode(content: "Episode #01", title: "Pilot", date: "  06 Mars 2024", imageURL: "https://cdn-s-www.jde.fr/images/8AB636F4-1886-4690-BEB6-0DDD5E97E98B/JDE_detail_raw/photo-20th-century-studios-1652450949.jpg"),
-          ],
+      body: BlocProvider(
+        create: (context) => ComicVineEpisodeBloc(1)..add(LoadComicVineEpisodeEvent()),
+        child: BlocBuilder<ComicVineEpisodeBloc, ComicVineEpisodeState>(
+          builder: (context, state) {
+            if(state is LoadedComicVineEpisodeState) {
+              final ComicVineEpisode episode = state.episode;
+              return Center(
+                // Center is a layout widget. It takes a single child and positions it
+                // in the middle of the parent.
+                child: Column(
+                  children: <Widget>[
+                    Episode(content: "Episode #${episode.episodeNumber}", title: episode.name??"", date: episode.airDate??"", imageURL: episode.image?.smallUrl??""),
+                  ],
+                ),
+              );
+            }
+            else if(state is ErrorComicVineEpisodeState) {
+              return Center(
+                child: Text(state.message),
+              );
+            }
+            else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          },
+
         ),
-      ),
+      ), 
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
