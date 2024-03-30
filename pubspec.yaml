@@ -39,6 +39,7 @@ dependencies:
   json_annotation: ^4.8.1
   dio: ^5.4.1
   retrofit: ^4.1.0
+  flutter_bloc: ^8.1.5
   
 dev_dependencies:
   flutter_test:
