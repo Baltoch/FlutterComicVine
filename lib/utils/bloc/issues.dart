@@ -35,7 +35,7 @@ class ComicVineIssuesBloc extends Bloc<ComicVineIssuesEvent, ComicVineIssuesStat
       try {
         final issues = await _comicVineRequests.getIssues();
         emit(LoadedComicVineIssuesState(issues.results));
-      } 
+      }
       catch (e) {
         emit(ErrorComicVineIssuesState('Failed to load issues: $e'));
       }

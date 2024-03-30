@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttercomicvine/widget/card.dart';
 import 'dart:ui';
 
 import '../utils/appcolors.dart';
@@ -33,9 +34,6 @@ class HomePage extends StatelessWidget {
         builder: (context, currentPageIndex) {
           return Scaffold(
             body: _HomePageBody(currentPageIndex: currentPageIndex),
-              
-
-
             bottomNavigationBar: NavBar(currentPageIndex: currentPageIndex, setPageIndex: (index) => context.read<CurrentPageIndexCubit>().set(index)),
           );
         },
@@ -73,14 +71,69 @@ class _Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       // Center is a layout widget. It takes a single child and positions it
       // in the middle of the parent.
-      child: Column(
-        children: <Widget>[
-          Episode(content: "Episode #01", title: "Pilot", date: "  06 Mars 2024", imageURL: "https://cdn-s-www.jde.fr/images/8AB636F4-1886-4690-BEB6-0DDD5E97E98B/JDE_detail_raw/photo-20th-century-studios-1652450949.jpg"),
-        ],
-      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            const AppTitle(content: "Bienvenue !"),
+            BlocBuilder<ComicVineSeriesListBloc, ComicVineSeriesListState>(
+              builder: (context, state) {
+                if(state is LoadedComicVineSeriesListState) {
+                  return CardSlider(
+                    hasButton: true, 
+                    title: "Séries populaires",
+                    cardList: state.seriesList.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
+                  );
+                }
+                else if(state is ErrorComicVineSeriesListState) {
+                  return Text(state.message);
+                }
+                else {
+                  return const CircularProgressIndicator();
+                }
+              }
+            ),
+            const SizedBox(height: 16),
+            BlocBuilder<ComicVineIssuesBloc, ComicVineIssuesState>(
+              builder: (context, state) {
+                if(state is LoadedComicVineIssuesState) {
+                  return CardSlider(
+                    hasButton: true, 
+                    title: "Comics populaires",
+                    cardList: state.issues.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
+                  );
+                }
+                else if(state is ErrorComicVineIssuesState) {
+                  return Text(state.message);
+                }
+                else {
+                  return const CircularProgressIndicator();
+                }
+              }
+            ),
+            const SizedBox(height: 16),
+            BlocBuilder<ComicVineMoviesBloc, ComicVineMoviesState>(
+              builder: (context, state) {
+                if(state is LoadedComicVineMoviesState) {
+                  return CardSlider(
+                    hasButton: true, 
+                    title: "Films populaires",
+                    cardList: state.movies.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
+                  );
+                }
+                else if(state is ErrorComicVineMoviesState) {
+                  return Text(state.message);
+                }
+                else {
+                  return const CircularProgressIndicator();
+                }
+              }
+            ),
+          ],
+        )
+      )
     );
   }
 }
