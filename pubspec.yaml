@@ -111,6 +111,7 @@ flutter:
         style: italic
 
   assets:
+    - assets\svg\astronaut.svg
     - assets\svg\ic_books_bicolor.svg
     - assets\svg\ic_calendar_bicolor.svg
     - assets\svg\ic_calendar_bicolor.svg

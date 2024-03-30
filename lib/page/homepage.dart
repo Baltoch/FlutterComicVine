@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
 import 'package:fluttercomicvine/widget/card.dart';
 import 'dart:ui';
 
@@ -71,69 +72,95 @@ class _Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      // Center is a layout widget. It takes a single child and positions it
-      // in the middle of the parent.
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            const AppTitle(content: "Bienvenue !"),
-            BlocBuilder<ComicVineSeriesListBloc, ComicVineSeriesListState>(
-              builder: (context, state) {
-                if(state is LoadedComicVineSeriesListState) {
-                  return CardSlider(
-                    hasButton: true, 
-                    title: "Séries populaires",
-                    cardList: state.seriesList.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
-                  );
-                }
-                else if(state is ErrorComicVineSeriesListState) {
-                  return Text(state.message);
-                }
-                else {
-                  return const CircularProgressIndicator();
-                }
-              }
-            ),
-            const SizedBox(height: 16),
-            BlocBuilder<ComicVineIssuesBloc, ComicVineIssuesState>(
-              builder: (context, state) {
-                if(state is LoadedComicVineIssuesState) {
-                  return CardSlider(
-                    hasButton: true, 
-                    title: "Comics populaires",
-                    cardList: state.issues.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
-                  );
-                }
-                else if(state is ErrorComicVineIssuesState) {
-                  return Text(state.message);
-                }
-                else {
-                  return const CircularProgressIndicator();
-                }
-              }
-            ),
-            const SizedBox(height: 16),
-            BlocBuilder<ComicVineMoviesBloc, ComicVineMoviesState>(
-              builder: (context, state) {
-                if(state is LoadedComicVineMoviesState) {
-                  return CardSlider(
-                    hasButton: true, 
-                    title: "Films populaires",
-                    cardList: state.movies.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
-                  );
-                }
-                else if(state is ErrorComicVineMoviesState) {
-                  return Text(state.message);
-                }
-                else {
-                  return const CircularProgressIndicator();
-                }
-              }
-            ),
-          ],
+    return Stack(
+      children: [
+        Container(
+          height: 192,
+          padding: const EdgeInsets.only(left: 32, right: 10, top: 16, bottom: 16),
+          child: Row(
+            children: [
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppTitle(content: "Bienvenue !"),
+                ],
+              ),
+              const Expanded(child: SizedBox()),
+              Column(
+                children: [
+                  SvgPicture.asset(AppVectorialImages.astronaut)
+                ],
+              )
+            ],
+          )
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                const SizedBox(height: 192),
+                BlocBuilder<ComicVineSeriesListBloc, ComicVineSeriesListState>(
+                  builder: (context, state) {
+                    if(state is LoadedComicVineSeriesListState) {
+                      return CardSlider(
+                        hasButton: true, 
+                        title: "Séries populaires",
+                        cardList: state.seriesList.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
+                      );
+                    }
+                    else if(state is ErrorComicVineSeriesListState) {
+                      return Text(state.message);
+                    }
+                    else {
+                      return const CircularProgressIndicator();
+                    }
+                  }
+                ),
+                const SizedBox(height: 16),
+                BlocBuilder<ComicVineIssuesBloc, ComicVineIssuesState>(
+                  builder: (context, state) {
+                    if(state is LoadedComicVineIssuesState) {
+                      return CardSlider(
+                        hasButton: true, 
+                        title: "Comics populaires",
+                        cardList: state.issues.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
+                      );
+                    }
+                    else if(state is ErrorComicVineIssuesState) {
+                      return Text(state.message);
+                    }
+                    else {
+                      return const CircularProgressIndicator();
+                    }
+                  }
+                ),
+                const SizedBox(height: 16),
+                BlocBuilder<ComicVineMoviesBloc, ComicVineMoviesState>(
+                  builder: (context, state) {
+                    if(state is LoadedComicVineMoviesState) {
+                      return CardSlider(
+                        hasButton: true, 
+                        title: "Films populaires",
+                        cardList: state.movies.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
+                      );
+                    }
+                    else if(state is ErrorComicVineMoviesState) {
+                      return Text(state.message);
+                    }
+                    else {
+                      return const CircularProgressIndicator();
+                    }
+                  }
+                ),
+                const SizedBox(height: 16)
+              ],
+            )
+          )
         )
-      )
+      ],
     );
   }
 }
