@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'appcolors.dart';
 
 class Popular extends StatelessWidget {
-  const Popular ({super.key, required this.title, required this.edition, required this.nbEpisodes, required this.date, required this.rank, required this.imageURL});
+  const Popular ({super.key, required this.title, this.edition, this.nbEpisodes, required this.date, required this.rank, required this.imageURL, this.nomLivre, this.numeroLivre, this.duree});
 
   final String title;
-  final String edition;
-  final String nbEpisodes;
+  final String ?edition;
+  final String ?nbEpisodes;
   final String date;
   final String rank;
   final String imageURL;
+  final String ?nomLivre;
+  final String ?numeroLivre;
+  final String ?duree;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// /
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +55,10 @@ class Popular extends StatelessWidget {
                 ),
               Expanded(
                 flex: 3,
-                child : Padding(
+                child : 
+                Padding(
                   padding: EdgeInsets.only(top: 30),
                   child: Column(
-                    //mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children : [
                       Text(
@@ -64,21 +69,55 @@ class Popular extends StatelessWidget {
                           fontFamily: 'Nunito',
                           fontWeight: FontWeight.bold ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 30),
+
+
+                      if (nomLivre !=null) ...[
+                        Padding(
+                        padding: EdgeInsets.only(top: 10),
                         child : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-
+                        
                         children: [
                           Row(
                             children: [
-                              Icon(
-                            Icons.local_movies,
-                            color: Colors.grey,
-                            size: 20,
-                          ),
+                              Text(
+                                nomLivre!,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontFamily: 'Nunito',
+                                  fontStyle: FontStyle.italic
+                                ),)
+                            ]
+                            ),
+                            
+                          
+                        ],
+                        ),
+                      )
+                      ],
+                      
+
+
+                      if (edition !=null) ...[
+                        Padding(
+                        padding: EdgeInsets.only(top: 30, bottom: 5),
+                        child : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        
+                        children: [
+                          Row(
+                            children: [
+                              Padding(padding: EdgeInsets.only(right: 5),
+                              child : Icon(
+                                Icons.local_movies,
+                                color: Colors.grey,
+                                size: 20,
+                              ),
+                              ),
+                              
                           Text(
-                            edition,
+                            edition!,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 17,
@@ -86,30 +125,95 @@ class Popular extends StatelessWidget {
                             ),)
                             ]
                             ),
-                            Row (
-                              children: [
-                                Icon(
-                             Icons.tv,
-                            color: Colors.grey,
-                            size: 20,
-                          ),
-                          Text(
-                            nbEpisodes,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontFamily: 'Nunito'
-                            ),)
+                            
+                          
+                        ],
+                        ),
+                      )
+                      ],
+                      if (nbEpisodes !=null) ...[
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 5),
+                          child : 
+                          Row (
+                                children: [
+                                  Padding(padding: EdgeInsets.only(right: 5),
+                                  child : Icon(
+                                 
+                                    Icons.tv,
+                                    color: Colors.grey,
+                                    size: 20,
+                            ),),
+                            Text(
+                              nbEpisodes!,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                                fontFamily: 'Nunito'
+                              ),)
 
-                              ],),
+                                ],)
+                          )
+                          
+                                
+                                ],
 
-                              Row (
-                              children: [
-                                Icon(
-                            Icons.calendar_today,
-                            color: Colors.grey,
-                            size: 20,
-                          ),
+
+
+                      if (numeroLivre !=null) ...[
+                        Padding(padding: EdgeInsets.only(top: 20,bottom: 5),
+                        child : Row (
+                                children: [
+                                  Padding(padding: EdgeInsets.only(right: 5),
+                                  child : Icon(
+                                    Icons.book,
+                                    color: Colors.grey,
+                                    size: 20,
+                            ),),
+                            Text(
+                              numeroLivre!,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                                fontFamily: 'Nunito'
+                              ),)
+
+                                ],),)
+                        
+                                
+                                ],
+                      
+                      if (duree !=null) ...[
+                        Padding (padding: EdgeInsets.only(top: 40, bottom: 5),
+                        child: Row (
+                                children: [
+                                  Padding(padding: EdgeInsets.only(right: 5),
+                                  child : Icon(
+                                    Icons.timelapse,
+                                    color: Colors.grey,
+                                    size: 20,
+                            ),),
+                            Text(
+                              duree!,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 17,
+                                fontFamily: 'Nunito'
+                              ),)
+
+                                ],))
+                        
+                                
+                                ],
+
+                      Row (
+                        children: [
+                          Padding(padding: EdgeInsets.only(right: 5),
+                          child : Icon(
+                          Icons.calendar_today,
+                          color: Colors.grey,
+                          size: 20,
+                              ),),
                           Text(
                             date,
                             style: TextStyle(
@@ -117,12 +221,7 @@ class Popular extends StatelessWidget {
                               fontSize: 17,
                               fontFamily: 'Nunito'
                             ),)
-
                               ],)
-                          
-                        ],
-                        ),
-                      )
                       
                       ],
                         ),

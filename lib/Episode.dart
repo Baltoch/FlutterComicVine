@@ -34,12 +34,6 @@ class Episode extends StatelessWidget {
                     imageURL,
                     fit: BoxFit.cover,
       ),
-                  /*
-                  child : Image(
-                    image : AssetImage('image.jpeg'),
-                    fit: BoxFit.cover,
-                    
-                  ),*/
                   ))
                 
                 ),
