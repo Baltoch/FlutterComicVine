@@ -337,7 +337,7 @@ class ComicVineSeries {
   final List<ComicVineCharactersItem>? characters;
 
   @JsonKey(name: 'count_of_episodes')
-  final String? countOfEpisodes;
+  final int? countOfEpisodes;
 
   @JsonKey(name: 'description')
   final String? description;

@@ -298,7 +298,7 @@ ComicVineSeries _$ComicVineSeriesFromJson(Map<String, dynamic> json) =>
           ?.map((e) =>
               ComicVineCharactersItem.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['count_of_episodes'] as String?,
+      json['count_of_episodes'] as int?,
       json['description'] as String?,
       (json['episodes'] as List<dynamic>?)
           ?.map(
