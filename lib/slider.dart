@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/card.dart';
 
-const List<CardTemplate> cardItem = [
-  CardTemplate(
-      imagePath: 'assets/images/image5.jpg',
-      description: 'The Sliver Surfer #16 - In the Hands of ... Mephisto!'),
-  CardTemplate(
-      imagePath: 'assets/images/image1.jpg',
-      description: 'Wonder Woman #89 - Home'),
-  CardTemplate(
-      imagePath: 'assets/images/image2.jpg',
-      description: 'Chamber of Chill Magazine #13 - The Lost Race'),
-  CardTemplate(
-      imagePath: 'assets/images/image3.jpg',
-      description: 'Fighting Fronts! #3'),
-  CardTemplate(
-      imagePath: 'assets/images/image4.jpg', description: 'Tomb of Terror'),
-];
-
 class SliderTitle extends StatelessWidget {
   const SliderTitle({super.key, required this.content});
 
@@ -135,10 +118,15 @@ class Header extends StatelessWidget {
 }
 
 class CardSlider extends StatelessWidget {
-  const CardSlider({super.key, required this.title, required this.hasButton});
+  const CardSlider(
+      {super.key,
+      required this.title,
+      required this.hasButton,
+      required this.cardItem});
 
   final String title;
   final bool hasButton;
+  final List<CardTemplate> cardItem;
 
   static const double sliderWidth = 424;
   static const double sliderHeight = 329;

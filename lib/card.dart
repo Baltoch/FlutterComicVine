@@ -1,41 +1,15 @@
 import 'package:flutter/material.dart';
 
-// enum CardType {
-//   movie,
-//   serie,
-//   comic,
-//   character;
-// }
-
-class ImageSection extends StatelessWidget {
-  const ImageSection({super.key, required this.image});
-
-  final String image;
-  static const double imageWidth = 180;
-  static const double imageHeight = 177;
-  static const double imageBorderRadius = 10;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(imageBorderRadius),
-        topRight: Radius.circular(imageBorderRadius),
-      ),
-      child: Image.asset(
-        image,
-        width: imageWidth,
-        height: imageHeight,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-}
-
 class DescriptionSection extends StatelessWidget {
-  const DescriptionSection({super.key, required this.description});
+  const DescriptionSection(
+      {super.key,
+      required this.name,
+      required this.volume,
+      required this.issueNumber});
 
-  final String description;
+  final String? name;
+  final String? volume;
+  final String? issueNumber;
 
   static const Color textColor = Colors.white;
   static const double fontSizeText = 16;
@@ -50,7 +24,7 @@ class DescriptionSection extends StatelessWidget {
       height: containerHeight,
       padding: EdgeInsets.zero,
       child: Text(
-        description,
+        '${volume ?? ''} ${issueNumber == null ? '' : '#$issueNumber'} ${name == null ? '' : '-$name'}',
         maxLines: 2,
         style: const TextStyle(
           color: textColor,
@@ -67,7 +41,11 @@ class DescriptionSection extends StatelessWidget {
 
 class CardTemplate extends StatelessWidget {
   const CardTemplate(
-      {super.key, required this.imagePath, required this.description});
+      {super.key,
+      required this.imagePath,
+      required this.name,
+      required this.issueNumber,
+      required this.volume});
 
   static const double cardWidth = 180;
   static const double cardHeight = 242;
@@ -76,7 +54,9 @@ class CardTemplate extends StatelessWidget {
   static const double imageBorderRadius = 10;
 
   final String imagePath;
-  final String description;
+  final String? name;
+  final String? volume;
+  final String? issueNumber;
   // final Map<String, String> description;
   // final CardType type;
 
@@ -92,10 +72,11 @@ class CardTemplate extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            ImageSection(image: imagePath),
+            ImageFromUrl(imageUrl: imagePath),
             const SizedBox(height: 12),
             Align(
-              child: DescriptionSection(description: description),
+              child: DescriptionSection(
+                  name: name, volume: volume, issueNumber: issueNumber),
             ),
           ],
         ),
@@ -104,13 +85,46 @@ class CardTemplate extends StatelessWidget {
   }
 }
 
-// class ImageFromUrl extends StatelessWidget {
-//   const ImageFromUrl({super.key, required this.imageUrl});
+class ImageFromUrl extends StatelessWidget {
+  const ImageFromUrl({super.key, required this.imageUrl});
 
-//   final String imageUrl;
-//   static const double imageBorderRadius = 10;
+  final String imageUrl;
+  static const double imageBorderRadius = 10;
+  static const double imageWidth = 180;
+  static const double imageHeight = 177;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(imageBorderRadius),
+        topRight: Radius.circular(imageBorderRadius),
+      ),
+      child: Image.network(
+        imageUrl,
+        width: imageWidth,
+        height: imageHeight,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+}
+
+
+// enum CardType {
+//   movie,
+//   serie,
+//   comic,
+//   character;
+// }
+
+// class ImageSection extends StatelessWidget {
+//   const ImageSection({super.key, required this.image});
+
+//   final String image;
 //   static const double imageWidth = 180;
 //   static const double imageHeight = 177;
+//   static const double imageBorderRadius = 10;
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -119,8 +133,8 @@ class CardTemplate extends StatelessWidget {
 //         topLeft: Radius.circular(imageBorderRadius),
 //         topRight: Radius.circular(imageBorderRadius),
 //       ),
-//       child: Image.network(
-//         imageUrl,
+//       child: Image.asset(
+//         image,
 //         width: imageWidth,
 //         height: imageHeight,
 //         fit: BoxFit.cover,
@@ -128,3 +142,4 @@ class CardTemplate extends StatelessWidget {
 //     );
 //   }
 // }
+

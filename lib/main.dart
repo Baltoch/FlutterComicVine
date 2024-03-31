@@ -1,4 +1,5 @@
-import 'dart:ui';
+import 'package:fluttercomicvine/card.dart';
+import 'package:fluttercomicvine/slider.dart';
 
 import 'comicvine_model.dart';
 import 'comicvine_api.dart';
@@ -28,24 +29,43 @@ class MyApp extends StatelessWidget {
 class ComicVineRequestTester extends StatelessWidget {
   const ComicVineRequestTester({super.key});
 
+  static List<CardTemplate> cardList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ComicVine API'),
+        title: const Text('ComicVine API'),
       ),
       body: FutureBuilder(
-        future: ComicVineRequests().getSeries(),
-        builder: (_, AsyncSnapshot<ComicVineSeriesResponse> req) {
+        future: ComicVineRequests().getIssues(),
+        builder: (_, AsyncSnapshot<ComicVineIssuesResponse> req) {
           if (req.hasError) {
             return Text('Une erreur est survenue : ${req.error}');
           } else if (!req.hasData) {
             return const CircularProgressIndicator();
           } else {
-            return Text('${req.data!.results.map((e) => e.name)}');
+            for (var i = 0; i < 5; i++) {
+              cardList.add(CardTemplate(
+                  imagePath: req.data!.results[i].image?['small_url'],
+                  name: req.data!.results[i].name,
+                  issueNumber: req.data!.results[i].issueNumber,
+                  volume: req.data!.results[i].volume?['name']));
+            }
+            return CardSlider(
+                title: "Comics populaires",
+                hasButton: true,
+                cardItem: cardList);
           }
         },
       ),
     );
   }
 }
+//Text('${req.data!.results[0].name}')
+
+// CardTemplate(
+//                 imagePath: req.data!.results[0].image?['small_url'],
+//                 name: req.data!.results[0].name,
+//                 issueNumber: req.data!.results[0].issueNumber,
+//                 volume: req.data!.results[0].volume?['name']);
