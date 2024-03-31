@@ -126,7 +126,7 @@ class _Home extends StatelessWidget {
                       return CardSlider(
                         hasButton: true, 
                         title: "Comics populaires",
-                        cardList: state.issues.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'')).toList(),  
+                        cardList: state.issues.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: '${e.volume?.name??""} ${e.issueNumber==null?"":"#${e.issueNumber}"} ${e.name==null?"":"- ${e.name}"}')).toList(),  
                       );
                     }
                     else if(state is ErrorComicVineIssuesState) {
