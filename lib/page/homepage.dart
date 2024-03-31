@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
 import 'package:fluttercomicvine/widget/card.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:fluttercomicvine/utils/appcolors.dart';
 import 'package:fluttercomicvine/utils/bloc/currentpageindex.dart';
@@ -205,7 +206,7 @@ class _Comics extends StatelessWidget {
                           imageURL: e.value.image?.smallUrl??'',
                           nomLivre: e.value.name,
                           numeroLivre: e.value.issueNumber,
-                          onClick: (e) {},
+                          onClick: (event) => context.go('/issue/${e.value.id}'),
                         )
                       )).toList()
                     );

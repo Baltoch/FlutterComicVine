@@ -13,9 +13,8 @@ import 'package:fluttercomicvine/widget/tabs.dart';
 
 class IssueDetailsPage extends StatelessWidget {
   final int id;
-  final String title;
 
-  const IssueDetailsPage({super.key, required this.id, required this.title});
+  const IssueDetailsPage({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {

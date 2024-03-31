@@ -26,7 +26,7 @@ final GoRouter _router = GoRouter(
           path: 'issue/:id',
           builder: (BuildContext context, GoRouterState state) {
             final id = state.pathParameters['id'];
-            return const Placeholder();
+            return IssueDetailsPage(id: int.parse(id!));
           },
         ),
         GoRoute(
