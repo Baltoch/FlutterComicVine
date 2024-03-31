@@ -417,7 +417,7 @@ class _Search extends StatelessWidget {
                   ),
                 ),
 
-                Padding (padding: EdgeInsets.only(top: 20) ,
+                Padding (padding: const EdgeInsets.only(top: 20) ,
                 child: Container(
                   height: 125,
                   width: 325, 
@@ -426,7 +426,7 @@ class _Search extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25),
                   ),
 
-                  child: Padding(
+                  child: const Padding(
                     padding: EdgeInsets.only(left: 30, top: 30, bottom: 30, right: 95),
                     child: Center(
                       child: Text(
@@ -438,10 +438,10 @@ class _Search extends StatelessWidget {
                 ),),
                 
                 Positioned(
-                  child: SvgPicture.asset(AppVectorialImages.astronaut),
                   height: 80,
                   top: 0, 
-                  right: -10, 
+                  right: -10,
+                  child: SvgPicture.asset(AppVectorialImages.astronaut),
                 ),
               ],
             ),
