@@ -12,7 +12,7 @@ abstract class ComicVineAPI {
   @GET('issues')
   Future<ComicVineIssuesResponse> loadIssues(
     {@Query('field_list') String? fieldList='id,name,image,volume,issue_number,cover_date',
-    @Query('limit') int? limit=20,
+    @Query('limit') int? limit=5,
     @Query('offset') int? offset=0}
   );
 
@@ -27,7 +27,7 @@ abstract class ComicVineAPI {
   @GET('movies')
   Future<ComicVineMoviesResponse> loadMovies(
     {@Query('field_list') String? fieldList='id,image,runtime,date_added,api_detail_url,name',
-    @Query('limit') int? limit=20,
+    @Query('limit') int? limit=5,
     @Query('offset') int? offset=0}
   );
 
@@ -42,7 +42,7 @@ abstract class ComicVineAPI {
   @GET('series_list')
   Future<ComicVineSeriesListResponse> loadSeriesList(
     {@Query('field_list') String? fieldList='id,name,image,publisher,count_of_episodes,start_year',
-    @Query('limit') int? limit=20,
+    @Query('limit') int? limit=5,
     @Query('offset') int? offset=0}
   );
 
@@ -96,9 +96,9 @@ class ComicVineRequests {
   );
 
   //Request "Comics"
-  Future<ComicVineIssuesResponse> getIssues() {
+  Future<ComicVineIssuesResponse> getIssues(int limit) {
     try {
-      return _api.loadIssues(limit: 50);
+      return _api.loadIssues(limit: limit);
     } catch (e) {
       print(e);
       rethrow;
@@ -115,9 +115,9 @@ class ComicVineRequests {
   }
 
   //Request "Films"
-  Future<ComicVineMoviesResponse> getMovies() {
+  Future<ComicVineMoviesResponse> getMovies(int limit) {
     try {
-      return _api.loadMovies(limit: 50);
+      return _api.loadMovies(limit: limit);
     } catch (e) {
       print(e);
       rethrow;
@@ -134,9 +134,9 @@ class ComicVineRequests {
   }
 
   //Request "Series"
-  Future<ComicVineSeriesListResponse> getSeriesList() {
+  Future<ComicVineSeriesListResponse> getSeriesList(int limit) {
     try {
-      return _api.loadSeriesList(limit: 50);
+      return _api.loadSeriesList(limit: limit);
     } catch (e) {
       print(e);
       rethrow;

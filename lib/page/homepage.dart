@@ -27,9 +27,9 @@ class HomePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => CurrentPageIndexCubit()),
-        BlocProvider<ComicVineIssuesBloc>(create:(context) => ComicVineIssuesBloc()..add(LoadComicVineIssuesEvent())),
-        BlocProvider<ComicVineMoviesBloc>(create:(context) => ComicVineMoviesBloc()..add(LoadComicVineMoviesEvent())),
-        BlocProvider<ComicVineSeriesListBloc>(create:(context) => ComicVineSeriesListBloc()..add(LoadComicVineSeriesListEvent())),
+        BlocProvider<ComicVineIssuesBloc>(create:(context) => ComicVineIssuesBloc(5)..add(LoadComicVineIssuesEvent())),
+        BlocProvider<ComicVineMoviesBloc>(create:(context) => ComicVineMoviesBloc(5)..add(LoadComicVineMoviesEvent())),
+        BlocProvider<ComicVineSeriesListBloc>(create:(context) => ComicVineSeriesListBloc(5)..add(LoadComicVineSeriesListEvent())),
       ],
       child: BlocBuilder<CurrentPageIndexCubit, int>(
         builder: (context, currentPageIndex) {

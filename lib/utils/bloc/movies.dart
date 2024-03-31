@@ -28,12 +28,13 @@ class ErrorComicVineMoviesState extends ComicVineMoviesState {
 // BLoC
 class ComicVineMoviesBloc extends Bloc<ComicVineMoviesEvent, ComicVineMoviesState> {
   final ComicVineRequests _comicVineRequests = ComicVineRequests();
+  final int limit;
 
-  ComicVineMoviesBloc() : super(LoadingComicVineMoviesState()) {
+  ComicVineMoviesBloc(this.limit) : super(LoadingComicVineMoviesState()) {
     on<LoadComicVineMoviesEvent>((event, emit) async {
       emit(LoadingComicVineMoviesState());
       try {
-        final movies = await _comicVineRequests.getMovies();
+        final movies = await _comicVineRequests.getMovies(limit);
         emit(LoadedComicVineMoviesState(movies.results));
       } 
       catch (e) {
