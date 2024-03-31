@@ -18,6 +18,7 @@ class AppColors {
   static const bottomBar = bottomBarBackgroundColor;
   static const darkBlue = cardBackgroundColor;
   static const section = cardBackgroundColor;
+  static const section50 = Color(0x7F1E3243);
   static const darkOrange = Color(0xFF341100);
   static const navtext = Color(0xFF728CAB);
   static const white = Color(0xFFFFFFFF);

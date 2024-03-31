@@ -114,6 +114,9 @@ class _Home extends StatelessWidget {
                     else if(state is ErrorComicVineSeriesListState) {
                       return Text(state.message);
                     }
+                    else if(state is LoadingComicVineSeriesListState) {
+                      return const CardSliderSkeleton();
+                    }
                     else {
                       return const CircularProgressIndicator();
                     }
@@ -133,6 +136,9 @@ class _Home extends StatelessWidget {
                     else if(state is ErrorComicVineIssuesState) {
                       return Text(state.message);
                     }
+                    else if(state is LoadingComicVineIssuesState) {
+                      return const CardSliderSkeleton();
+                    }
                     else {
                       return const CircularProgressIndicator();
                     }
@@ -151,6 +157,9 @@ class _Home extends StatelessWidget {
                     }
                     else if(state is ErrorComicVineMoviesState) {
                       return Text(state.message);
+                    }
+                    else if(state is LoadingComicVineMoviesState) {
+                      return const CardSliderSkeleton();
                     }
                     else {
                       return const CircularProgressIndicator();
@@ -209,8 +218,16 @@ class _Comics extends StatelessWidget {
                     );
                   }
                   else if(state is LoadingComicVineIssuesState) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: Column(
+                        children: List.generate(
+                          30, 
+                          (index) => Container(
+                            margin: const EdgeInsets.only(top: 21),
+                            child: const PopularSkeleton()
+                          )
+                        )
+                      ),
                     );
                   }
                   else {
@@ -269,8 +286,16 @@ class _Series extends StatelessWidget {
                     );
                   }
                   else if(state is LoadingComicVineSeriesListState) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: Column(
+                        children: List.generate(
+                          30, 
+                          (index) => Container(
+                            margin: const EdgeInsets.only(top: 21),
+                            child: const PopularSkeleton()
+                          )
+                        )
+                      ),
                     );
                   }
                   else {
@@ -328,8 +353,16 @@ class _Movies extends StatelessWidget {
                     );
                   }
                   else if(state is LoadingComicVineMoviesState) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: Column(
+                        children: List.generate(
+                          30, 
+                          (index) => Container(
+                            margin: const EdgeInsets.only(top: 21),
+                            child: const PopularSkeleton()
+                          )
+                        )
+                      ),
                     );
                   }
                   else {

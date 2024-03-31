@@ -140,7 +140,7 @@ class CardSlider extends StatelessWidget {
       child: Container(
         height: sliderHeight,
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(sliderBorderRadius)),
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(sliderBorderRadius), bottomLeft: Radius.circular(sliderBorderRadius)),
           color: sliderBackgroundColor,
         ),
         child: Column(
@@ -163,6 +163,57 @@ class CardSlider extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CardSliderSkeleton extends StatefulWidget {
+  const CardSliderSkeleton({super.key});
+
+  @override
+  State<CardSliderSkeleton> createState() => _CardSliderSkeletonState();
+}
+
+class _CardSliderSkeletonState extends State<CardSliderSkeleton> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _colorTween;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    )..repeat(reverse: true);
+
+    _colorTween = ColorTween(
+      begin: AppColors.section,
+      end: AppColors.section50,
+    ).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Container(
+            height: 329,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
+              color: _colorTween.value,
+            ),
+          );
+        }
+      )
     );
   }
 }

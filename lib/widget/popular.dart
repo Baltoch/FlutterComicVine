@@ -92,7 +92,8 @@ class Popular extends StatelessWidget {
                                               color: Colors.white,
                                               fontSize: 20,
                                               fontFamily: 'Nunito',
-                                              fontStyle: FontStyle.italic
+                                              fontStyle: FontStyle.italic,
+                                              overflow: TextOverflow.ellipsis
                                             ),
                                           )
                                         ]),
@@ -263,6 +264,57 @@ class Popular extends StatelessWidget {
             )
           ]
         ),
+      )
+    );
+  }
+}
+
+class PopularSkeleton extends StatefulWidget {
+  const PopularSkeleton({super.key});
+
+  @override
+  State<PopularSkeleton> createState() => _PopularSkeletonState();
+}
+
+class _PopularSkeletonState extends State<PopularSkeleton> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _colorTween;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    )..repeat(reverse: true);
+
+    _colorTween = ColorTween(
+      begin: AppColors.section,
+      end: AppColors.section50,
+    ).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Container(
+            height: 200,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(30)),
+              color: _colorTween.value,
+            ),
+          );
+        }
       )
     );
   }
