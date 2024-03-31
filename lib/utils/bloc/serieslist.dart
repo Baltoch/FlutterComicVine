@@ -5,7 +5,11 @@ import '../api/comicvine_model.dart';
 // Events
 abstract class ComicVineSeriesListEvent {}
 
-class LoadComicVineSeriesListEvent extends ComicVineSeriesListEvent {}
+class LoadComicVineSeriesListEvent extends ComicVineSeriesListEvent {
+  final int limit;
+
+  LoadComicVineSeriesListEvent(this.limit);
+}
 
 
 // States
@@ -28,13 +32,12 @@ class ErrorComicVineSeriesListState extends ComicVineSeriesListState {
 // BLoC
 class ComicVineSeriesListBloc extends Bloc<ComicVineSeriesListEvent, ComicVineSeriesListState> {
   final ComicVineRequests _comicVineRequests = ComicVineRequests();
-  final int limit;
 
-  ComicVineSeriesListBloc(this.limit) : super(LoadingComicVineSeriesListState()) {
+  ComicVineSeriesListBloc() : super(LoadingComicVineSeriesListState()) {
     on<LoadComicVineSeriesListEvent>((event, emit) async {
       emit(LoadingComicVineSeriesListState());
       try {
-        final seriesList = await _comicVineRequests.getSeriesList(limit);
+        final seriesList = await _comicVineRequests.getSeriesList(event.limit);
         emit(LoadedComicVineSeriesListState(seriesList.results));
       } 
       catch (e) {

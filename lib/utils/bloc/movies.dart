@@ -5,7 +5,11 @@ import '../api/comicvine_model.dart';
 // Events
 abstract class ComicVineMoviesEvent {}
 
-class LoadComicVineMoviesEvent extends ComicVineMoviesEvent {}
+class LoadComicVineMoviesEvent extends ComicVineMoviesEvent {
+  final int limit;
+
+  LoadComicVineMoviesEvent(this.limit);
+}
 
 
 // States
@@ -28,13 +32,12 @@ class ErrorComicVineMoviesState extends ComicVineMoviesState {
 // BLoC
 class ComicVineMoviesBloc extends Bloc<ComicVineMoviesEvent, ComicVineMoviesState> {
   final ComicVineRequests _comicVineRequests = ComicVineRequests();
-  final int limit;
 
-  ComicVineMoviesBloc(this.limit) : super(LoadingComicVineMoviesState()) {
+  ComicVineMoviesBloc() : super(LoadingComicVineMoviesState()) {
     on<LoadComicVineMoviesEvent>((event, emit) async {
       emit(LoadingComicVineMoviesState());
       try {
-        final movies = await _comicVineRequests.getMovies(limit);
+        final movies = await _comicVineRequests.getMovies(event.limit);
         emit(LoadedComicVineMoviesState(movies.results));
       } 
       catch (e) {
