@@ -9,6 +9,7 @@ import 'package:fluttercomicvine/utils/bloc/currentpageindex.dart';
 import 'package:fluttercomicvine/utils/bloc/issues.dart';
 import 'package:fluttercomicvine/utils/bloc/movies.dart';
 import 'package:fluttercomicvine/utils/bloc/serieslist.dart';
+import 'package:fluttercomicvine/widget/searchbar.dart';
 import 'package:fluttercomicvine/widget/slider.dart';
 import 'package:fluttercomicvine/widget/navbar.dart';
 import 'package:fluttercomicvine/widget/title.dart';
@@ -243,11 +244,74 @@ class _Movies extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
+
 class _Search extends StatelessWidget {
   const _Search({super.key});
 
-  @override
+ @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(bottom: 570),
+          child: AppSearchBar(),
+        ),
+        
+        Center (
+          
+          child: Container(
+            height: 200,
+            width: 325,
+            child: Stack(
+
+              children: [
+                Container(
+                  height: 200,
+                  width: 325,
+                  decoration: BoxDecoration(
+                    color: AppColors.transparent,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+
+                Padding (padding: EdgeInsets.only(top: 20) ,
+                child: Container(
+                  height: 125,
+                  width: 325, 
+                  decoration: BoxDecoration(
+                    color: AppColors.bgSearch,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 30, top: 30, bottom: 30, right: 95),
+                    child: Center(
+                      child: Text(
+                        "Saisissez une recherche pour trouver un comics, film, série ou personnage",
+                        style: TextStyle(color: AppColors.blue),
+                      ),
+                    ),
+                  ),
+                ),),
+                
+                Positioned(
+                  child: SvgPicture.asset(AppVectorialImages.astronaut),
+                  height: 80,
+                  top: 0, 
+                  right: -10, 
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
