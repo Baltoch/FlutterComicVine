@@ -10,6 +10,7 @@ import 'utils/appcolors.dart';
 import 'page/homepage.dart';
 import 'page/issuedetails.dart';
 import 'page/moviedetails.dart';
+import 'page/seriedetails.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +35,7 @@ final GoRouter _router = GoRouter(
           path: 'series/:id',
           builder: (BuildContext context, GoRouterState state) {
             final id = state.pathParameters['id'];
-            return const Placeholder();
+            return SerieDetailsPage(id: int.parse(id!));
           },
         ),
         GoRoute(

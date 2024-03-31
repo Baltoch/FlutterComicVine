@@ -110,7 +110,7 @@ class _Home extends StatelessWidget {
                         onSeeMoreClick: () => BlocProvider.of<CurrentPageIndexCubit>(context)..set(2),
                         hasButton: true, 
                         title: "Séries populaires",
-                        cardList: state.seriesList.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'', onClick: (e) {})).toList(),  
+                        cardList: state.seriesList.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'', onClick: (event) => context.go('/series/${e.id}'))).toList(),  
                       );
                     }
                     else if(state is ErrorComicVineSeriesListState) {
@@ -274,7 +274,7 @@ class _Series extends StatelessWidget {
                           imageURL: e.value.image?.smallUrl??'',
                           nbEpisodes: e.value.countOfEpisodes.toString(),
                           edition: e.value.publisher?.name,
-                          onClick: (e) {},
+                          onClick: (event) => context.go('/series/${e.value.id}'),
                         )
                       )).toList()
                     );
