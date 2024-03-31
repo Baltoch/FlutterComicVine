@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-// enum CardType {
-//   movie,
-//   serie,
-//   comic,
-//   character;
-// }
-
 class ImageSection extends StatelessWidget {
   const ImageSection({super.key, required this.image});
 
@@ -66,8 +59,7 @@ class DescriptionSection extends StatelessWidget {
 }
 
 class CardTemplate extends StatelessWidget {
-  const CardTemplate(
-      {super.key, required this.imagePath, required this.description});
+  const CardTemplate({super.key, required this.imagePath, required this.description, required this.onClick});
 
   static const double cardWidth = 180;
   static const double cardHeight = 242;
@@ -77,54 +69,31 @@ class CardTemplate extends StatelessWidget {
 
   final String imagePath;
   final String description;
-  // final Map<String, String> description;
-  // final CardType type;
+  final Function(PointerDownEvent) onClick;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: cardWidth,
-        height: cardHeight,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(cardBorderRadius)),
-          color: cardBackgroundColor,
+    return Listener(
+      onPointerDown: onClick,
+      child: Center(
+        child: Container(
+          width: cardWidth,
+          height: cardHeight,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(cardBorderRadius)),
+            color: cardBackgroundColor,
+          ),
+          child: Column(
+            children: <Widget>[
+              ImageSection(image: imagePath),
+              const SizedBox(height: 12),
+              Align(
+                child: DescriptionSection(description: description),
+              ),
+            ],
+          ),
         ),
-        child: Column(
-          children: <Widget>[
-            ImageSection(image: imagePath),
-            const SizedBox(height: 12),
-            Align(
-              child: DescriptionSection(description: description),
-            ),
-          ],
-        ),
-      ),
+      )
     );
   }
 }
-
-// class ImageFromUrl extends StatelessWidget {
-//   const ImageFromUrl({super.key, required this.imageUrl});
-
-//   final String imageUrl;
-//   static const double imageBorderRadius = 10;
-//   static const double imageWidth = 180;
-//   static const double imageHeight = 177;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ClipRRect(
-//       borderRadius: const BorderRadius.only(
-//         topLeft: Radius.circular(imageBorderRadius),
-//         topRight: Radius.circular(imageBorderRadius),
-//       ),
-//       child: Image.network(
-//         imageUrl,
-//         width: imageWidth,
-//         height: imageHeight,
-//         fit: BoxFit.cover,
-//       ),
-//     );
-//   }
-// }
