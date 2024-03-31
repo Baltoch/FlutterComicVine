@@ -80,7 +80,12 @@ class SerieDetailsPage extends StatelessWidget {
                                           return Text(state.message);
                                         } else if (state
                                             is LoadingComicVineCharacterState) {
-                                          return const CircularProgressIndicator();
+                                          return Container(
+                                            padding: const EdgeInsets.only(
+                                              left: 25, bottom: 15
+                                            ),
+                                            child: const PersonSkeleton()
+                                          );
                                         } else {
                                           return const Placeholder();
                                         }

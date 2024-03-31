@@ -11,6 +11,8 @@ import 'page/homepage.dart';
 import 'page/issuedetails.dart';
 import 'page/moviedetails.dart';
 import 'page/seriedetails.dart';
+import 'page/persondetails.dart';
+import 'page/characterdetails.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +45,20 @@ final GoRouter _router = GoRouter(
           builder: (BuildContext context, GoRouterState state) {
             final id = state.pathParameters['id'];
             return MovieDetailsPage(id: int.parse(id!));
+          },
+        ),
+        GoRoute(
+          path: 'person/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            final id = state.pathParameters['id'];
+            return PersonDetailsPage(id: int.parse(id!));
+          },
+        ),
+        GoRoute(
+          path: 'character/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            final id = state.pathParameters['id'];
+            return CharacterDetailsPage(id: int.parse(id!));
           },
         ),
       ],
