@@ -138,7 +138,10 @@ class SerieDetailsPage extends StatelessWidget {
               } else if (state is ErrorComicVineSeriesState) {
                 return Text(state.message);
               } else {
-                return const CircularProgressIndicator();
+                return Container(
+                  alignment:Alignment.center,
+                  child: const CircularProgressIndicator()
+                );
               }
             },
           ),
