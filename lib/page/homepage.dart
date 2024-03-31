@@ -3,19 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
 import 'package:fluttercomicvine/widget/card.dart';
-import 'dart:ui';
 
-import '../utils/appcolors.dart';
-import '../utils/api/comicvine_model.dart';
-import '../utils/api/comicvine_api.dart';
-import '../utils/bloc/currentpageindex.dart';
-import '../utils/bloc/issues.dart';
-import '../utils/bloc/movies.dart';
-import '../utils/bloc/serieslist.dart';
-import '../widget/slider.dart';
-import '../widget/episode.dart';
-import '../widget/navbar.dart';
-import '../widget/title.dart';
+import 'package:fluttercomicvine/utils/appcolors.dart';
+import 'package:fluttercomicvine/utils/bloc/currentpageindex.dart';
+import 'package:fluttercomicvine/utils/bloc/issues.dart';
+import 'package:fluttercomicvine/utils/bloc/movies.dart';
+import 'package:fluttercomicvine/utils/bloc/serieslist.dart';
+import 'package:fluttercomicvine/widget/slider.dart';
+import 'package:fluttercomicvine/widget/navbar.dart';
+import 'package:fluttercomicvine/widget/title.dart';
+import 'package:fluttercomicvine/widget/popular.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -27,9 +24,9 @@ class HomePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => CurrentPageIndexCubit()),
-        BlocProvider<ComicVineIssuesBloc>(create:(context) => ComicVineIssuesBloc(5)..add(LoadComicVineIssuesEvent())),
-        BlocProvider<ComicVineMoviesBloc>(create:(context) => ComicVineMoviesBloc(5)..add(LoadComicVineMoviesEvent())),
-        BlocProvider<ComicVineSeriesListBloc>(create:(context) => ComicVineSeriesListBloc(5)..add(LoadComicVineSeriesListEvent())),
+        BlocProvider<ComicVineIssuesBloc>(create:(context) => ComicVineIssuesBloc()..add(LoadComicVineIssuesEvent(5))),
+        BlocProvider<ComicVineMoviesBloc>(create:(context) => ComicVineMoviesBloc()..add(LoadComicVineMoviesEvent(5))),
+        BlocProvider<ComicVineSeriesListBloc>(create:(context) => ComicVineSeriesListBloc()..add(LoadComicVineSeriesListEvent(5))),
       ],
       child: BlocBuilder<CurrentPageIndexCubit, int>(
         builder: (context, currentPageIndex) {
@@ -179,7 +176,61 @@ class _Series extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return BlocProvider<ComicVineSeriesListBloc>(
+      create: (context) => ComicVineSeriesListBloc()..add(LoadComicVineSeriesListEvent(30)),
+      child: Container(
+        padding: const EdgeInsets.only(left: 8, right: 8),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                margin: const EdgeInsets.only(left: 24, right: 24, top: 34),
+                child: const AppTitle(content: "Séries les plus populaires")
+              ),
+              BlocBuilder<ComicVineSeriesListBloc, ComicVineSeriesListState>(builder: (context, state) {
+                  if(state is LoadedComicVineSeriesListState) {
+                    return Column(children: state.seriesList.asMap().entries.map((e) => Container(
+                        margin: const EdgeInsets.only(top: 21),
+                        child: Popular(
+                          title: e.value.name??'', 
+                          date: e.value.startYear??'',
+                          rank: '#${(e.key + 1).toString()}', 
+                          imageURL: e.value.image?.smallUrl??'',
+                          nbEpisodes: e.value.countOfEpisodes.toString(),
+                        )
+                      )).toList()
+                    );
+                  }
+                  else if(state is ErrorComicVineSeriesListState) {
+                    return Text(
+                      state.message, 
+                      style: const TextStyle(
+                        color: AppColors.white,
+                      ),
+                    );
+                  }
+                  else if(state is LoadingComicVineSeriesListState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  else {
+                    return const Placeholder();
+                  }
+                },
+              )
+            ]
+          ),
+        ),
+      ),
+    );
+    // BlocBuilder(builder: (context, state) {
+        
+    //   },
+    // );
+    // BlocProvider(create: BlocProvider.of<ComicVineMoviesBloc>(context).add(LoadComicVineMoviesEvent(30)))
+    // ;
   }
 }
 
