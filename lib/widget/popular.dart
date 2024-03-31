@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../utils/appcolors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
+
+
 
 class Popular extends StatelessWidget {
   const Popular(
@@ -109,14 +113,12 @@ class Popular extends StatelessWidget {
                                       children: [
                                         Row(
                                           children: [
-                                            const Padding(
+                                            Padding (
                                               padding: EdgeInsets.only(right: 5),
-                                              child: Icon(
-                                                Icons.local_movies,
-                                                color: Colors.grey,
-                                                size: 20,
-                                              ),
-                                            ),
+                                              child : SvgPicture.asset(
+                                              AppVectorialImages.icPublisherBicolor,
+                                              colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                              ),),                                     
                                             Text(
                                               edition!,
                                               style: const TextStyle(
@@ -135,14 +137,12 @@ class Popular extends StatelessWidget {
                                     padding: const EdgeInsets.only(bottom: 5),
                                     child: Row(
                                       children: [
-                                        const Padding(
-                                          padding: EdgeInsets.only(right: 5),
-                                          child: Icon(
-                                            Icons.tv,
-                                            color: Colors.grey,
-                                            size: 20,
-                                          ),
-                                        ),
+                                        Padding (
+                                              padding: EdgeInsets.only(right: 5),
+                                              child : SvgPicture.asset(
+                                              AppVectorialImages.icTvBicolor,
+                                              colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                              ),),
                                         Text(
                                           nbEpisodes!,
                                           style: const TextStyle(
@@ -160,14 +160,13 @@ class Popular extends StatelessWidget {
                                     padding: const EdgeInsets.only(top: 20, bottom: 5),
                                     child: Row(
                                       children: [
-                                        const Padding(
+                                        Padding (
                                           padding: EdgeInsets.only(right: 5),
-                                          child: Icon(
-                                            Icons.book,
-                                            color: Colors.grey,
-                                            size: 20,
-                                          ),
-                                        ),
+                                          child : SvgPicture.asset(
+                                          AppVectorialImages.icBooksBicolor,
+                                          height: 20,
+                                          colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                          ),),
                                         Text(
                                           numeroLivre!,
                                           style: const TextStyle(
@@ -185,14 +184,13 @@ class Popular extends StatelessWidget {
                                     padding: const EdgeInsets.only(top: 40, bottom: 5),
                                     child: Row(
                                       children: [
-                                        const Padding(
+                                        Padding (
                                           padding: EdgeInsets.only(right: 5),
-                                          child: Icon(
-                                            Icons.timelapse,
-                                            color: Colors.grey,
-                                            size: 20,
-                                          ),
-                                        ),
+                                          child : SvgPicture.asset(
+                                          AppVectorialImages.icMovieBicolor,
+                                          height: 18,
+                                          colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                          ),),
                                         Text(
                                           duree!,
                                           style: const TextStyle(
@@ -207,14 +205,13 @@ class Popular extends StatelessWidget {
                                 ],
                                 Row(
                                   children: [
-                                    const Padding(
+                                    Padding (
                                       padding: EdgeInsets.only(right: 5),
-                                      child: Icon(
-                                        Icons.calendar_today,
-                                        color: Colors.grey,
-                                        size: 20,
-                                      ),
-                                    ),
+                                      child : SvgPicture.asset(
+                                      AppVectorialImages.icCalendarBicolor,
+                                      height: 21,
+                                      colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                      ),),
                                     Text(
                                       date,
                                       style: const TextStyle(

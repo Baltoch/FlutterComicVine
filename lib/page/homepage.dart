@@ -437,7 +437,7 @@ class _Search extends StatelessWidget {
                     ),
                   ),
                 ),),
-                
+
                 Positioned(
                   height: 80,
                   top: 0, 
