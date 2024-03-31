@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const IssueDetailsPage(
-        id: 6,
+        id: 16,
         title: 'Flutter Demo Home Page',
       ),
     );

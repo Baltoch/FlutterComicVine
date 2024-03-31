@@ -21,7 +21,7 @@ class _ComicVineAPI implements ComicVineAPI {
   @override
   Future<ComicVineIssuesResponse> loadIssues({
     String? fieldList = 'id,name,image,volume,issue_number,cover_date',
-    int? limit = 20,
+    int? limit = 5,
     int? offset = 0,
   }) async {
     const _extra = <String, dynamic>{};
@@ -81,7 +81,7 @@ class _ComicVineAPI implements ComicVineAPI {
   @override
   Future<ComicVineMoviesResponse> loadMovies({
     String? fieldList = 'id,image,runtime,date_added,api_detail_url,name',
-    int? limit = 20,
+    int? limit = 5,
     int? offset = 0,
   }) async {
     const _extra = <String, dynamic>{};
@@ -141,7 +141,7 @@ class _ComicVineAPI implements ComicVineAPI {
   @override
   Future<ComicVineSeriesListResponse> loadSeriesList({
     String? fieldList = 'id,name,image,publisher,count_of_episodes,start_year',
-    int? limit = 20,
+    int? limit = 5,
     int? offset = 0,
   }) async {
     const _extra = <String, dynamic>{};

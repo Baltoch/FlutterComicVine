@@ -392,7 +392,10 @@ ComicVinePerson _$ComicVinePersonFromJson(Map<String, dynamic> json) =>
       json['aliases'] as String?,
       json['birth'] as String?,
       json['country'] as String?,
-      json['death'] as String?,
+      json['death'] == null
+          ? null
+          : ComicVinePersonDeath.fromJson(
+              json['death'] as Map<String, dynamic>),
       json['deck'] as String?,
       json['description'] as String?,
       json['gender'] as int?,
@@ -544,4 +547,20 @@ Map<String, dynamic> _$ComicVinePublisherToJson(ComicVinePublisher instance) =>
       'api_detail_url': instance.apiDetailUrl,
       'id': instance.id,
       'name': instance.name,
+    };
+
+ComicVinePersonDeath _$ComicVinePersonDeathFromJson(
+        Map<String, dynamic> json) =>
+    ComicVinePersonDeath(
+      json['date'] as String?,
+      json['timezone_type'] as int?,
+      json['timezone'] as String?,
+    );
+
+Map<String, dynamic> _$ComicVinePersonDeathToJson(
+        ComicVinePersonDeath instance) =>
+    <String, dynamic>{
+      'date': instance.date,
+      'timezone_type': instance.timezoneType,
+      'timezone': instance.timezone,
     };
