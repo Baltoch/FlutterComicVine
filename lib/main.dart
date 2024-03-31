@@ -9,6 +9,7 @@ import 'utils/bloc/episode.dart';
 import 'utils/appcolors.dart';
 import 'page/homepage.dart';
 import 'page/issuedetails.dart';
+import 'page/moviedetails.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +41,7 @@ final GoRouter _router = GoRouter(
           path: 'movie/:id',
           builder: (BuildContext context, GoRouterState state) {
             final id = state.pathParameters['id'];
-            return const Placeholder();
+            return MovieDetailsPage(id: int.parse(id!));
           },
         ),
       ],

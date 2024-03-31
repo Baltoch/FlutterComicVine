@@ -132,7 +132,7 @@ class _Home extends StatelessWidget {
                         onSeeMoreClick: () => BlocProvider.of<CurrentPageIndexCubit>(context)..set(1),
                         hasButton: true, 
                         title: "Comics populaires",
-                        cardList: state.issues.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: '${e.volume?.name??""} ${e.issueNumber==null?"":"#${e.issueNumber}"} ${e.name==null?"":"- ${e.name}"}', onClick: (e) {})).toList(),  
+                        cardList: state.issues.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: '${e.volume?.name??""} ${e.issueNumber==null?"":"#${e.issueNumber}"} ${e.name==null?"":"- ${e.name}"}', onClick: (event) => context.go('/issue/${e.id}'))).toList(),  
                       );
                     }
                     else if(state is ErrorComicVineIssuesState) {
@@ -154,7 +154,7 @@ class _Home extends StatelessWidget {
                         onSeeMoreClick: () => BlocProvider.of<CurrentPageIndexCubit>(context)..set(3),
                         hasButton: true, 
                         title: "Films populaires",
-                        cardList: state.movies.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'', onClick: (e) {})).toList(),  
+                        cardList: state.movies.map((e) => CardTemplate(imagePath: e.image?.smallUrl??'', description: e.name??'', onClick: (event) => context.go('/movie/${e.id}'))).toList(),  
                       );
                     }
                     else if(state is ErrorComicVineMoviesState) {
@@ -341,7 +341,7 @@ class _Movies extends StatelessWidget {
                           duree: e.value.runtime,
                           rank: '#${(e.key + 1).toString()}', 
                           imageURL: e.value.image?.smallUrl??'',
-                          onClick: (e) {},
+                          onClick: (event) => context.go('/movie/${e.value.id}'),
                         )
                       )).toList()
                     );
