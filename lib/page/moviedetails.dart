@@ -82,7 +82,10 @@ class MovieDetailsPage extends StatelessWidget {
                                           return Text(state.message);
                                         } else if (state
                                             is LoadingComicVineCharacterState) {
-                                          return const CircularProgressIndicator();
+                                          return Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 25, bottom: 15),
+                                              child: const PersonSkeleton());
                                         } else {
                                           return const Placeholder();
                                         }
@@ -142,7 +145,9 @@ class MovieDetailsPage extends StatelessWidget {
               } else if (state is ErrorComicVineMovieState) {
                 return Text(state.message);
               } else {
-                return const CircularProgressIndicator();
+                return Container(
+                    alignment: Alignment.center,
+                    child: const CircularProgressIndicator());
               }
             },
           ),
