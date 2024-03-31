@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import 'utils/api/comicvine_model.dart';
 import 'utils/api/comicvine_api.dart';
@@ -16,35 +17,53 @@ void main() {
   runApp(const MyApp());
 }
 
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomePage(title: 'Flutter Demo Home Page');
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'issue/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            final id = state.pathParameters['id'];
+            return const Placeholder();
+          },
+        ),
+        GoRoute(
+          path: 'series/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            final id = state.pathParameters['id'];
+            return const Placeholder();
+          },
+        ),
+        GoRoute(
+          path: 'movie/:id',
+          builder: (BuildContext context, GoRouterState state) {
+            final id = state.pathParameters['id'];
+            return const Placeholder();
+          },
+        ),
+      ],
+    ),
+  ],
+);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         scaffoldBackgroundColor: AppColors.screenBackgroundColor, // Set the background color
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.background),
         useMaterial3: true,
       ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
+      routerConfig: _router,
     );
   }
 }
