@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
-import 'appcolors.dart';
+import '../utils/appcolors.dart';
 
 class AppSearchBar extends StatelessWidget {
   final void Function(String, Map<String, dynamic>)? onAppPrivateCommand;

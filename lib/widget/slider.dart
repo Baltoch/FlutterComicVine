@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/card.dart';
+import 'card.dart';
 
 const List<CardTemplate> cardItem = [
   CardTemplate(
@@ -135,10 +135,11 @@ class Header extends StatelessWidget {
 }
 
 class CardSlider extends StatelessWidget {
-  const CardSlider({super.key, required this.title, required this.hasButton});
+  const CardSlider({super.key, required this.title, required this.hasButton, required this.cardList});
 
   final String title;
   final bool hasButton;
+  final List<CardTemplate> cardList;
 
   static const double sliderWidth = 424;
   static const double sliderHeight = 329;
@@ -165,11 +166,11 @@ class CardSlider extends StatelessWidget {
                     return Padding(
                         padding: EdgeInsetsDirectional.only(
                             start: index == 0 ? 10 : 0),
-                        child: cardItem[index]);
+                        child: cardList[index]);
                   },
                   separatorBuilder: (BuildContext context, int index) =>
                       const SizedBox(width: 10),
-                  itemCount: cardItem.length),
+                  itemCount: cardList.length),
             ),
           ],
         ),

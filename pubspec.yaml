@@ -36,7 +36,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.10+1
-
+  json_annotation: ^4.8.1
+  dio: ^5.4.1
+  retrofit: ^4.1.0
+  flutter_bloc: ^8.1.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,6 +51,9 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  build_runner: ^2.4.8
+  json_serializable: any
+  retrofit_generator: ^6.0.0+2 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -104,6 +111,7 @@ flutter:
         style: italic
 
   assets:
+    - assets\svg\astronaut.svg
     - assets\svg\ic_books_bicolor.svg
     - assets\svg\ic_calendar_bicolor.svg
     - assets\svg\ic_calendar_bicolor.svg
@@ -115,12 +123,6 @@ flutter:
     - assets\svg\navbar_movies.svg
     - assets\svg\navbar_search.svg
     - assets\svg\navbar_series.svg
-    - assets/images/
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

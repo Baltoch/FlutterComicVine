@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'appcolors.dart';
+import '../utils/appcolors.dart';
 
 
 class MyButton extends StatelessWidget {
@@ -7,9 +7,9 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold
+    return  Center
     (
-      body: Center(
+      
         child: Container
         (
           height: 100,
@@ -28,7 +28,7 @@ class MyButton extends StatelessWidget {
             ),
             )
           )
-        )
+        
       )
     );
   }
