@@ -40,6 +40,7 @@ dependencies:
   dio: ^5.4.1
   retrofit: ^4.1.0
   flutter_bloc: ^8.1.5
+  flutter_widget_from_html: ^0.14.11
   
 dev_dependencies:
   flutter_test:

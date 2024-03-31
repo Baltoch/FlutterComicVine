@@ -1,16 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import 'utils/api/comicvine_model.dart';
-import 'utils/api/comicvine_api.dart';
-import 'utils/bloc/episode.dart';
 import 'utils/appcolors.dart';
-import 'widget/title.dart';
-import 'widget/tabs.dart';
-import 'widget/episode.dart';
-import 'page/homepage.dart';
+import 'page/issuedetails.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,11 +30,15 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        scaffoldBackgroundColor: AppColors.screenBackgroundColor, // Set the background color
+        scaffoldBackgroundColor:
+            AppColors.screenBackgroundColor, // Set the background color
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
+      home: const IssueDetailsPage(
+        id: 6,
+        title: 'Flutter Demo Home Page',
+      ),
     );
   }
 }

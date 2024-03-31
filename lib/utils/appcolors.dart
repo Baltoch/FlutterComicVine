@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color screenBackgroundColor = Color(0xFF15232E);
+  static const Color screenBackgroundImage = Color.fromRGBO(21, 35, 46, 0.7);
   static const Color orange = Color(0xFFFF8100);
   static const Color cardBackgroundColor = Color(0xFF1E3243);
   static const Color cardElementBackgroundColor = Color(0xFF284C6A);
@@ -13,6 +14,7 @@ class AppColors {
   static const Color blue = Color(0xFF3792FF);
   static const Color blue8 = Color(0x143792FF);
   static const background = screenBackgroundColor;
+  static const backgroundImage = screenBackgroundImage;
   static const bgSearch = Color(0xFF223141);
   static const blueBlue = cardElementBackgroundColor;
   static const bottomBar = bottomBarBackgroundColor;
