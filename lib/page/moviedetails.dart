@@ -90,30 +90,40 @@ class MovieDetailsPage extends StatelessWidget {
                                   .toList(),
                             ),
                           )),
-                          Column(children: <Information>[
+                          SingleChildScrollView(
+                              child: Expanded(
+                                  child: Column(children: <Information>[
                             Information(
                                 title: 'Classification',
                                 description: [state.movie.rating!]),
                             Information(
                                 title: 'Réalisateur',
-                                description: state.movie.producers!
-                                    .map((e) => e.name!)
-                                    .toList()),
+                                description: state.movie.producers == null
+                                    ? []
+                                    : state.movie.producers!
+                                        .map((e) => e.name ?? '')
+                                        .toList()),
                             Information(
                                 title: 'Scénaristes',
-                                description: state.movie.writers!
-                                    .map((e) => e.name!)
-                                    .toList()),
+                                description: state.movie.writers == null
+                                    ? []
+                                    : state.movie.writers!
+                                        .map((e) => e.name ?? '')
+                                        .toList()),
                             Information(
                                 title: 'Producteurs',
-                                description: state.movie.producers!
-                                    .map((e) => e.name!)
-                                    .toList()),
+                                description: state.movie.producers == null
+                                    ? []
+                                    : state.movie.producers!
+                                        .map((e) => e.name ?? '')
+                                        .toList()),
                             Information(
                                 title: 'Studios',
-                                description: state.movie.studios!
-                                    .map((e) => e.name!)
-                                    .toList()),
+                                description: state.movie.studios == null
+                                    ? []
+                                    : state.movie.studios!
+                                        .map((e) => e.name ?? '')
+                                        .toList()),
                             Information(
                                 title: 'Budget',
                                 description: [state.movie.budget!]),
@@ -123,7 +133,7 @@ class MovieDetailsPage extends StatelessWidget {
                             Information(
                                 title: 'Recettes brutes totales',
                                 description: [state.movie.totalRevenue!]),
-                          ])
+                          ])))
                         ]),
                       ),
                     ],
