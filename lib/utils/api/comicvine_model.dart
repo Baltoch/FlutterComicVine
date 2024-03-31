@@ -458,7 +458,7 @@ class ComicVinePerson {
   final String? country;
 
   @JsonKey(name: 'death')
-  final String? death;
+  final ComicVinePersonDeath? death;
 
   @JsonKey(name: 'deck')
   final String? deck;
@@ -653,4 +653,24 @@ class ComicVinePublisher {
       _$ComicVinePublisherFromJson(json);
 
   Map<String, dynamic> toJson() => _$ComicVinePublisherToJson(this);
+}
+
+// death utility
+@JsonSerializable()
+class ComicVinePersonDeath {
+  @JsonKey(name: 'date')
+  final String? date;
+
+  @JsonKey(name: 'timezone_type')
+  final int? timezoneType;
+
+  @JsonKey(name: 'timezone')
+  final String? timezone;
+
+  ComicVinePersonDeath(this.date, this.timezoneType, this.timezone);
+
+  factory ComicVinePersonDeath.fromJson(Map<String, dynamic> json) =>
+      _$ComicVinePersonDeathFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ComicVinePersonDeathToJson(this);
 }
