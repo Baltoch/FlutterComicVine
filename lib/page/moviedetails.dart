@@ -75,7 +75,8 @@ class MovieDetailsPage extends StatelessWidget {
                                                 imageURL: state.character.image
                                                         ?.smallUrl ??
                                                     '',
-                                                onClick: (e) {},
+                                                onClick: (event) => context
+                                                    .go('/character/${e.id}'),
                                               ));
                                         } else if (state
                                             is ErrorComicVineCharacterState) {

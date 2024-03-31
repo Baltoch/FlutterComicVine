@@ -30,12 +30,11 @@ class IssueDetailsPage extends StatelessWidget {
                   Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(top: 24, left: 16),
-                        child: MyBackButton(
-                          title: state.issue.volume?.name ?? '',
-                          onClick: (e) => context.go('/'),
-                        )
-                      ),
+                          padding: const EdgeInsets.only(top: 24, left: 16),
+                          child: MyBackButton(
+                            title: state.issue.volume?.name ?? '',
+                            onClick: (e) => context.go('/'),
+                          )),
                       Padding(
                         padding: const EdgeInsets.only(top: 11, left: 16),
                         child: RawInfo(
@@ -49,94 +48,94 @@ class IssueDetailsPage extends StatelessWidget {
                           'Histoire',
                           'Auteurs',
                           'Personnages'
-                        ],
-                        content: <Widget>[
+                        ], content: <Widget>[
                           Story(description: state.issue.description ?? ''),
                           SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 30),
-                              child: Column(
-                                children: state.issue.persons!.map(
-                                  (e) => BlocProvider<ComicVinePersonBloc>(
-                                    create: (context) => ComicVinePersonBloc(e.id!)..add(LoadComicVinePersonEvent()),
-                                    child: BlocBuilder<ComicVinePersonBloc, ComicVinePersonState>(
-                                      builder:(context, state) {
-                                        if(state is LoadedComicVinePersonState) {
+                              child: Padding(
+                            padding: const EdgeInsets.only(top: 30),
+                            child: Column(
+                              children: state.issue.persons!
+                                  .map((e) => BlocProvider<ComicVinePersonBloc>(
+                                      create: (context) =>
+                                          ComicVinePersonBloc(e.id!)
+                                            ..add(LoadComicVinePersonEvent()),
+                                      child: BlocBuilder<ComicVinePersonBloc,
+                                              ComicVinePersonState>(
+                                          builder: (context, state) {
+                                        if (state
+                                            is LoadedComicVinePersonState) {
                                           return Container(
-                                            padding: const EdgeInsets.only(
-                                              left: 25, bottom: 15
-                                            ),
-                                            child: Person(
-                                              name: state.person.name ?? '',
-                                              imageURL: state.person.image?.smallUrl ?? '',
-                                              title: e.role,
-                                              onClick: (e) {},
-                                            )
-                                          );
-                                        }
-                                        else if(state is ErrorComicVinePersonState) {
+                                              padding: const EdgeInsets.only(
+                                                  left: 25, bottom: 15),
+                                              child: Person(
+                                                name: state.person.name ?? '',
+                                                imageURL: state.person.image
+                                                        ?.smallUrl ??
+                                                    '',
+                                                title: e.role,
+                                                onClick: (event) => context
+                                                    .go('/person/${e.id}'),
+                                              ));
+                                        } else if (state
+                                            is ErrorComicVinePersonState) {
                                           return Text(state.message);
-                                        }
-                                        else if(state is LoadingComicVinePersonState) {
+                                        } else if (state
+                                            is LoadingComicVinePersonState) {
                                           return Container(
-                                            padding: const EdgeInsets.only(
-                                              left: 25, bottom: 15
-                                            ),
-                                            child: const PersonSkeleton()
-                                          );
-                                        }
-                                        else {
+                                              padding: const EdgeInsets.only(
+                                                  left: 25, bottom: 15),
+                                              child: const PersonSkeleton());
+                                        } else {
                                           return const Placeholder();
                                         }
-                                      } 
-                                    )
-                                  )
-                                ).toList(),
-                              ),
-                            )
-                          ),
+                                      })))
+                                  .toList(),
+                            ),
+                          )),
                           SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 30),
-                              child: Column(
-                                children: state.issue.characters!.map(
-                                  (e) => BlocProvider<ComicVineCharacterBloc>(
-                                    create: (context) => ComicVineCharacterBloc(e.id!)..add(LoadComicVineCharacterEvent()),
-                                    child: BlocBuilder<ComicVineCharacterBloc, ComicVineCharacterState>(
-                                      builder:(context, state) {
-                                        if(state is LoadedComicVineCharacterState) {
+                              child: Padding(
+                            padding: const EdgeInsets.only(top: 30),
+                            child: Column(
+                              children: state.issue.characters!
+                                  .map((e) => BlocProvider<
+                                          ComicVineCharacterBloc>(
+                                      create: (context) =>
+                                          ComicVineCharacterBloc(e.id!)
+                                            ..add(
+                                                LoadComicVineCharacterEvent()),
+                                      child: BlocBuilder<ComicVineCharacterBloc,
+                                              ComicVineCharacterState>(
+                                          builder: (context, state) {
+                                        if (state
+                                            is LoadedComicVineCharacterState) {
                                           return Container(
-                                            padding: const EdgeInsets.only(
-                                              left: 25, bottom: 15
-                                            ),
-                                            child: Person(
-                                              name: state.character.name ?? '',
-                                              imageURL: state.character.image?.smallUrl ?? '',
-                                              onClick: (e) {},
-                                            )
-                                          );
-                                        }
-                                        else if(state is ErrorComicVineCharacterState) {
+                                              padding: const EdgeInsets.only(
+                                                  left: 25, bottom: 15),
+                                              child: Person(
+                                                name:
+                                                    state.character.name ?? '',
+                                                imageURL: state.character.image
+                                                        ?.smallUrl ??
+                                                    '',
+                                                onClick: (event) => context
+                                                    .go('/character/${e.id}'),
+                                              ));
+                                        } else if (state
+                                            is ErrorComicVineCharacterState) {
                                           return Text(state.message);
-                                        }
-                                        else if(state is LoadingComicVineCharacterState) {
+                                        } else if (state
+                                            is LoadingComicVineCharacterState) {
                                           return Container(
-                                            padding: const EdgeInsets.only(
-                                              left: 25, bottom: 15
-                                            ),
-                                            child: const PersonSkeleton()
-                                          );
-                                        }
-                                        else {
+                                              padding: const EdgeInsets.only(
+                                                  left: 25, bottom: 15),
+                                              child: const PersonSkeleton());
+                                        } else {
                                           return const Placeholder();
                                         }
-                                      } 
-                                    )
-                                  )
-                                ).toList(),
-                              ),
-                            )
-                          ),
+                                      })))
+                                  .toList(),
+                            ),
+                          )),
                         ]),
                       ),
                     ],
@@ -146,9 +145,8 @@ class IssueDetailsPage extends StatelessWidget {
                 return Text(state.message);
               } else {
                 return Container(
-                  alignment:Alignment.center,
-                  child: const CircularProgressIndicator()
-                );
+                    alignment: Alignment.center,
+                    child: const CircularProgressIndicator());
               }
             },
           ),
