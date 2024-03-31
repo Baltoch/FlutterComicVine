@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercomicvine/main.dart';
 import '../utils/appcolors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
 
 class RawInfo extends StatelessWidget {
   const RawInfo(
@@ -16,7 +18,7 @@ class RawInfo extends StatelessWidget {
   final String imageURL;
   final String? edition;
   final String date;
-  final String? nbEpisodes;
+  final int? nbEpisodes;
   final String? duree;
   final String? numeroLivre;
   final String? nomLivre;
@@ -74,11 +76,13 @@ class RawInfo extends StatelessWidget {
                         ],
                         if (edition != null) ...[
                           Row(children: [
-                            const Icon(
-                              Icons.local_movies,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              size: 20,
-                            ),
+                            Padding (
+                              padding: EdgeInsets.only(right: 5),
+                              child : SvgPicture.asset(
+                              AppVectorialImages.icPublisherBicolor,
+                              height: 20,
+                              colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                              ),),
                             Text(
                               edition!,
                               style: const TextStyle(
@@ -92,16 +96,15 @@ class RawInfo extends StatelessWidget {
                         if (nbEpisodes != null) ...[
                           Row(
                             children: [
-                              const Padding(
+                              Padding (
                                 padding: EdgeInsets.only(right: 5),
-                                child: Icon(
-                                  Icons.tv,
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  size: 20,
-                                ),
-                              ),
+                                child : SvgPicture.asset(
+                                AppVectorialImages.icTvBicolor,
+                                height: 20,
+                                colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                                ),),
                               Text(
-                                nbEpisodes!,
+                                '$nbEpisodes',
                                 style: const TextStyle(
                                   color: Color.fromARGB(255, 255, 255, 255),
                                   fontSize: 17,
@@ -116,14 +119,13 @@ class RawInfo extends StatelessWidget {
                               padding: const EdgeInsets.only(bottom: 5),
                               child: Row(
                                 children: [
-                                  const Padding(
+                                  Padding (
                                     padding: EdgeInsets.only(right: 5),
-                                    child: Icon(
-                                      Icons.tv,
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      size: 20,
-                                    ),
-                                  ),
+                                    child : SvgPicture.asset(
+                                    AppVectorialImages.icBooksBicolor,
+                                    height: 20,
+                                    colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                                    ),),
                                   Text(
                                     numeroLivre!,
                                     style: const TextStyle(
@@ -139,14 +141,13 @@ class RawInfo extends StatelessWidget {
                               padding: const EdgeInsets.only(bottom: 5),
                               child: Row(
                                 children: [
-                                  const Padding(
+                                  Padding (
                                     padding: EdgeInsets.only(right: 5),
-                                    child: Icon(
-                                      Icons.timelapse,
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      size: 20,
-                                    ),
-                                  ),
+                                    child : SvgPicture.asset(
+                                    AppVectorialImages.icMovieBicolor,
+                                    height: 20,
+                                    colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                                    ),),
                                   Text(
                                     duree!,
                                     style: const TextStyle(
@@ -159,14 +160,13 @@ class RawInfo extends StatelessWidget {
                         ],
                         Row(
                           children: [
-                            const Padding(
+                            Padding (
                               padding: EdgeInsets.only(right: 5),
-                              child: Icon(
-                                Icons.calendar_today,
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                size: 20,
-                              ),
-                            ),
+                              child : SvgPicture.asset(
+                              AppVectorialImages.icCalendarBicolor,
+                              height: 21,
+                              colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                              ),),
                             Text(
                               date,
                               style: const TextStyle(

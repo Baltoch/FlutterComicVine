@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttercomicvine/utils/bloc/issue.dart';
+import 'package:fluttercomicvine/utils/bloc/series.dart';
 import 'package:fluttercomicvine/utils/bloc/person.dart';
 import 'package:fluttercomicvine/utils/bloc/character.dart';
 import 'package:fluttercomicvine/widget/backbutton.dart';
@@ -17,41 +17,41 @@ class IssueDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ComicVineIssueBloc>(
+    return BlocProvider<ComicVineSeriesBloc>(
         create: (context) =>
-            ComicVineIssueBloc(id)..add(LoadComicVineIssueEvent()),
+            ComicVineSeriesBloc(id)..add(LoadComicVineSeriesEvent()),
         child: Scaffold(
-          body: BlocBuilder<ComicVineIssueBloc, ComicVineIssueState>(
+          body: BlocBuilder<ComicVineSeriesBloc, ComicVineSeriesState>(
             builder: (context, state) {
-              if (state is LoadedComicVineIssueState) {
+              if (state is LoadedComicVineSeriesState) {
                 return Stack(children: <Widget>[
-                  BackgroundImage(imageUrl: state.issue.image?.mediumUrl ?? ''),
+                  BackgroundImage(
+                      imageUrl: state.series.image?.mediumUrl ?? ''),
                   Column(
                     children: <Widget>[
                       Padding(
                           padding: const EdgeInsets.only(top: 24, left: 16),
-                          child: MyBackButton(
-                              title: state.issue.volume?.name ?? '')),
+                          child: MyBackButton(title: state.series.name!)),
                       Padding(
                         padding: const EdgeInsets.only(top: 11, left: 16),
                         child: RawInfo(
-                            date: state.issue.coverDate ?? '',
-                            imageURL: state.issue.image?.smallUrl ?? '',
-                            nomLivre: state.issue.name,
-                            numeroLivre: state.issue.issueNumber),
+                            date: state.series.startYear!,
+                            imageURL: state.series.image?.smallUrl ?? '',
+                            nomLivre: state.series.name,
+                            nbEpisodes: state.series.countOfEpisodes!),
                       ),
                       Expanded(
                         child: Tabs(header: const [
                           'Histoire',
-                          'Auteurs',
-                          'Personnages'
+                          'Personnages',
+                          'Episodes'
                         ], content: <Widget>[
-                          Story(description: state.issue.description ?? ''),
+                          Story(description: state.series.description ?? ''),
                           SingleChildScrollView(
                               child: Padding(
                             padding: const EdgeInsets.only(top: 30),
                             child: Column(
-                              children: state.issue.persons!
+                              children: state.series.persons!
                                   .map((e) => BlocProvider<ComicVinePersonBloc>(
                                       create: (context) =>
                                           ComicVinePersonBloc(e.id!)
@@ -88,7 +88,7 @@ class IssueDetailsPage extends StatelessWidget {
                               child: Padding(
                             padding: const EdgeInsets.only(top: 30),
                             child: Column(
-                              children: state.issue.characters!
+                              children: state.series.characters!
                                   .map((e) => BlocProvider<
                                           ComicVineCharacterBloc>(
                                       create: (context) =>
@@ -128,7 +128,7 @@ class IssueDetailsPage extends StatelessWidget {
                     ],
                   ),
                 ]);
-              } else if (state is ErrorComicVineIssueState) {
+              } else if (state is ErrorComicVineSeriesState) {
                 return Text(state.message);
               } else {
                 return const CircularProgressIndicator();
