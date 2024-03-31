@@ -7,6 +7,7 @@ import 'utils/api/comicvine_model.dart';
 import 'utils/api/comicvine_api.dart';
 import 'utils/bloc/episode.dart';
 import 'utils/appcolors.dart';
+import 'page/homepage.dart';
 import 'page/issuedetails.dart';
 
 void main() {

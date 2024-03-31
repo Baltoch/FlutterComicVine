@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttercomicvine/utils/bloc/issue.dart';
 import 'package:fluttercomicvine/utils/bloc/person.dart';
@@ -30,9 +31,12 @@ class IssueDetailsPage extends StatelessWidget {
                   Column(
                     children: <Widget>[
                       Padding(
-                          padding: const EdgeInsets.only(top: 24, left: 16),
-                          child: MyBackButton(
-                              title: state.issue.volume?.name ?? '')),
+                        padding: const EdgeInsets.only(top: 24, left: 16),
+                        child: MyBackButton(
+                          title: state.issue.volume?.name ?? '',
+                          onClick: (e) => context.go('/'),
+                        )
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 11, left: 16),
                         child: RawInfo(
@@ -67,6 +71,7 @@ class IssueDetailsPage extends StatelessWidget {
                                               name: state.person.name ?? '',
                                               imageURL: state.person.image?.smallUrl ?? '',
                                               title: e.role,
+                                              onClick: (e) {},
                                             )
                                           );
                                         }
@@ -103,6 +108,7 @@ class IssueDetailsPage extends StatelessWidget {
                                             child: Person(
                                               name: state.character.name ?? '',
                                               imageURL: state.character.image?.smallUrl ?? '',
+                                              onClick: (e) {},
                                             )
                                           );
                                         }
