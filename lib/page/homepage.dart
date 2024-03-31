@@ -436,7 +436,7 @@ class _Search extends StatelessWidget {
                     ),
                   ),
                 ),),
-                
+
                 Positioned(
                   child: SvgPicture.asset(AppVectorialImages.astronaut),
                   height: 80,
