@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,10 +7,7 @@ import 'utils/api/comicvine_model.dart';
 import 'utils/api/comicvine_api.dart';
 import 'utils/bloc/episode.dart';
 import 'utils/appcolors.dart';
-import 'widget/title.dart';
-import 'widget/tabs.dart';
-import 'widget/episode.dart';
-import 'page/homepage.dart';
+import 'page/issuedetails.dart';
 
 void main() {
   runApp(const MyApp());
