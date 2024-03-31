@@ -16,7 +16,7 @@ class RawInfo extends StatelessWidget {
   final String imageURL;
   final String? edition;
   final String date;
-  final String? nbEpisodes;
+  final int? nbEpisodes;
   final String? duree;
   final String? numeroLivre;
   final String? nomLivre;
@@ -101,7 +101,7 @@ class RawInfo extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                nbEpisodes!,
+                                '$nbEpisodes',
                                 style: const TextStyle(
                                   color: Color.fromARGB(255, 255, 255, 255),
                                   fontSize: 17,
