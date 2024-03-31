@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttercomicvine/utils/bloc/issue.dart';
+import 'package:fluttercomicvine/utils/bloc/person.dart';
+import 'package:fluttercomicvine/utils/bloc/character.dart';
 import 'package:fluttercomicvine/widget/backbutton.dart';
 import 'package:fluttercomicvine/widget/backgroundimage.dart';
 import 'package:fluttercomicvine/widget/person.dart';
@@ -40,25 +42,86 @@ class IssueDetailsPage extends StatelessWidget {
                             numeroLivre: state.issue.issueNumber),
                       ),
                       Expanded(
-                        child: Tabs(header: [
+                        child: Tabs(header: const [
                           'Histoire',
                           'Auteurs',
                           'Personnages'
-                        ], content: <Widget>[
+                        ],
+                        content: <Widget>[
                           Story(description: state.issue.description ?? ''),
                           SingleChildScrollView(
-                            child: Column(
-                              children: state.issue.persons!
-                                  .map((e) => Container(
-                                      padding: const EdgeInsets.only(
-                                          top: 30, left: 25, bottom: 15),
-                                      child: Person(
-                                          name: e.name ?? '',
-                                          imageURL: e.image?.iconUrl ?? '')))
-                                  .toList(),
-                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 30),
+                              child: Column(
+                                children: state.issue.persons!.map(
+                                  (e) => BlocProvider<ComicVinePersonBloc>(
+                                    create: (context) => ComicVinePersonBloc(e.id!)..add(LoadComicVinePersonEvent()),
+                                    child: BlocBuilder<ComicVinePersonBloc, ComicVinePersonState>(
+                                      builder:(context, state) {
+                                        if(state is LoadedComicVinePersonState) {
+                                          return Container(
+                                            padding: const EdgeInsets.only(
+                                              left: 25, bottom: 15
+                                            ),
+                                            child: Person(
+                                              name: state.person.name ?? '',
+                                              imageURL: state.person.image?.smallUrl ?? '',
+                                              title: e.role,
+                                            )
+                                          );
+                                        }
+                                        else if(state is ErrorComicVinePersonState) {
+                                          return Text(state.message);
+                                        }
+                                        else if(state is LoadingComicVinePersonState) {
+                                          return const CircularProgressIndicator();
+                                        }
+                                        else {
+                                          return const Placeholder();
+                                        }
+                                      } 
+                                    )
+                                  )
+                                ).toList(),
+                              ),
+                            )
                           ),
-                          Text('Personnages')
+                          SingleChildScrollView(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 30),
+                              child: Column(
+                                children: state.issue.characters!.map(
+                                  (e) => BlocProvider<ComicVineCharacterBloc>(
+                                    create: (context) => ComicVineCharacterBloc(e.id!)..add(LoadComicVineCharacterEvent()),
+                                    child: BlocBuilder<ComicVineCharacterBloc, ComicVineCharacterState>(
+                                      builder:(context, state) {
+                                        if(state is LoadedComicVineCharacterState) {
+                                          return Container(
+                                            padding: const EdgeInsets.only(
+                                              left: 25, bottom: 15
+                                            ),
+                                            child: Person(
+                                              name: state.character.name ?? '',
+                                              imageURL: state.character.image?.smallUrl ?? '',
+                                            )
+                                          );
+                                        }
+                                        else if(state is ErrorComicVineCharacterState) {
+                                          return Text(state.message);
+                                        }
+                                        else if(state is LoadingComicVineCharacterState) {
+                                          return const CircularProgressIndicator();
+                                        }
+                                        else {
+                                          return const Placeholder();
+                                        }
+                                      } 
+                                    )
+                                  )
+                                ).toList(),
+                              ),
+                            )
+                          ),
                         ]),
                       ),
                     ],
@@ -74,12 +137,3 @@ class IssueDetailsPage extends StatelessWidget {
         ));
   }
 }
-
-//MyBackButton(title: state.issue.volume?.name ?? '')
-// BackgroundImage(imageUrl: state.issue.image?.screenUrl ?? '')
-// RawInfo(
-//   date: state.issue.coverDate ?? '',
-//   imageURL: state.issue.image?.screenUrl ?? '',
-//   nomLivre: state.issue.name,
-//   numeroLivre: state.issue.issueNumber
-// )
