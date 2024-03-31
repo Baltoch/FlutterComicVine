@@ -95,3 +95,57 @@ class Episode extends StatelessWidget {
     );
   }
 }
+
+class EpisodeSkeleton extends StatefulWidget {
+  const EpisodeSkeleton({super.key});
+
+  @override
+  State<EpisodeSkeleton> createState() => _EpisodeSkeletonState();
+}
+
+class _EpisodeSkeletonState extends State<EpisodeSkeleton> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _colorTween;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    )..repeat(reverse: true);
+
+    _colorTween = ColorTween(
+      begin: AppColors.blueBlue,
+      end: AppColors.section,
+    ).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          return Center(
+            child: Container(
+              height: 200,
+              width: 500,
+              decoration: BoxDecoration(
+                color: _colorTween.value,
+                borderRadius: BorderRadius.circular(30),
+              )
+            )
+          );
+        }
+      )
+    );
+  }
+}
