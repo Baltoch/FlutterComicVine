@@ -287,6 +287,40 @@ class _ComicVineAPI implements ComicVineAPI {
     return value;
   }
 
+  @override
+  Future<ComicVineCharactersResponse> loadCharacters({
+    String? fieldList = 'id,name,image,site_detail_url',
+    int? limit = 5,
+    int? offset = 0,
+    String? filter,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'field_list': fieldList,
+      r'limit': limit,
+      r'offset': offset,
+      r'filter': filter,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ComicVineCharactersResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'characters',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ComicVineCharactersResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

@@ -44,7 +44,8 @@ class ComicVineIssuesItem {
   @JsonKey(name: 'volume')
   final ComicVineVolume? volume;
 
-  ComicVineIssuesItem(this.name, this.issueNumber, this.image, this.volume, this.coverDate, this.id);
+  ComicVineIssuesItem(this.name, this.issueNumber, this.image, this.volume,
+      this.coverDate, this.id);
 
   factory ComicVineIssuesItem.fromJson(Map<String, dynamic> json) =>
       _$ComicVineIssuesItemFromJson(json);
@@ -117,7 +118,8 @@ class ComicVineIssue {
   @JsonKey(name: 'volume')
   final ComicVineVolume? volume;
 
-  ComicVineIssue(this.characters, this.coverDate, this.description, this.image, this.issueNumber, this.name, this.persons, this.volume);
+  ComicVineIssue(this.characters, this.coverDate, this.description, this.image,
+      this.issueNumber, this.name, this.persons, this.volume);
 
   factory ComicVineIssue.fromJson(Map<String, dynamic> json) =>
       _$ComicVineIssueFromJson(json);
@@ -167,7 +169,8 @@ class ComicVineMoviesItem {
   @JsonKey(name: 'runtime')
   final String? runtime;
 
-  ComicVineMoviesItem(this.apiDetailUrl, this.dateAdded, this.id, this.image, this.name, this.runtime);
+  ComicVineMoviesItem(this.apiDetailUrl, this.dateAdded, this.id, this.image,
+      this.name, this.runtime);
 
   factory ComicVineMoviesItem.fromJson(Map<String, dynamic> json) =>
       _$ComicVineMoviesItemFromJson(json);
@@ -233,14 +236,26 @@ class ComicVineMovie {
   @JsonKey(name: 'writers')
   final List<ComicVinePersonsItem>? writers;
 
-  ComicVineMovie(this.boxOfficeRevenue, this.budget, this.characters, this.dateAdded, this.description, this.image, this.name, this.producers, this.rating, this.runtime, this.studios, this.totalRevenue, this.writers);
+  ComicVineMovie(
+      this.boxOfficeRevenue,
+      this.budget,
+      this.characters,
+      this.dateAdded,
+      this.description,
+      this.image,
+      this.name,
+      this.producers,
+      this.rating,
+      this.runtime,
+      this.studios,
+      this.totalRevenue,
+      this.writers);
 
   factory ComicVineMovie.fromJson(Map<String, dynamic> json) =>
       _$ComicVineMovieFromJson(json);
 
   Map<String, dynamic> toJson() => _$ComicVineMovieToJson(this);
 }
-
 
 @JsonSerializable()
 class ComicVineStudio {
@@ -306,7 +321,8 @@ class ComicVineSeriesItem {
   @JsonKey(name: 'start_year')
   final String? startYear;
 
-  ComicVineSeriesItem(this.countOfEpisodes, this.id, this.image, this.name, this.publisher, this.startYear);
+  ComicVineSeriesItem(this.countOfEpisodes, this.id, this.image, this.name,
+      this.publisher, this.startYear);
 
   factory ComicVineSeriesItem.fromJson(Map<String, dynamic> json) =>
       _$ComicVineSeriesItemFromJson(json);
@@ -357,7 +373,8 @@ class ComicVineSeries {
   @JsonKey(name: 'start_year')
   final String? startYear;
 
-  ComicVineSeries(this.characters, this.countOfEpisodes, this.description, this.episodes, this.image, this.name, this.publisher, this.startYear);
+  ComicVineSeries(this.characters, this.countOfEpisodes, this.description,
+      this.episodes, this.image, this.name, this.publisher, this.startYear);
 
   factory ComicVineSeries.fromJson(Map<String, dynamic> json) =>
       _$ComicVineSeriesFromJson(json);
@@ -382,7 +399,8 @@ class ComicVineEpisodesItem {
   @JsonKey(name: 'episode_number')
   final String? episodeNumber;
 
-  ComicVineEpisodesItem(this.apiDetailUrl, this.id, this.name, this.siteDetailUrl, this.episodeNumber);
+  ComicVineEpisodesItem(this.apiDetailUrl, this.id, this.name,
+      this.siteDetailUrl, this.episodeNumber);
 
   factory ComicVineEpisodesItem.fromJson(Map<String, dynamic> json) =>
       _$ComicVineEpisodesItemFromJson(json);
@@ -481,7 +499,18 @@ class ComicVinePerson {
   @JsonKey(name: 'website')
   final String? website;
 
-  ComicVinePerson(this.aliases, this.birth, this.country, this.death, this.deck, this.description, this.gender, this.hometown, this.image, this.name, this.website);
+  ComicVinePerson(
+      this.aliases,
+      this.birth,
+      this.country,
+      this.death,
+      this.deck,
+      this.description,
+      this.gender,
+      this.hometown,
+      this.image,
+      this.name,
+      this.website);
 
   factory ComicVinePerson.fromJson(Map<String, dynamic> json) =>
       _$ComicVinePersonFromJson(json);
@@ -490,6 +519,49 @@ class ComicVinePerson {
 }
 
 //-------------------------Personnages---------------------------//
+
+// https://comicvine.gamespot.com/api/characters?api_key=8b4409f69ab868bcc3cbbe34dd52b3e19db555fd&format=json&field_list=id,name,image,site_detail_url&limit=30
+@JsonSerializable()
+class ComicVineCharactersResponse {
+  @JsonKey(name: 'results')
+  final List<ComicVineCharactersItems> results;
+
+  @JsonKey(name: 'status_code')
+  final int? statusCode;
+
+  ComicVineCharactersResponse(this.results, this.statusCode);
+
+  factory ComicVineCharactersResponse.fromJson(Map<String, dynamic> json) =>
+      _$ComicVineCharactersResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ComicVineCharactersResponseToJson(this);
+}
+
+@JsonSerializable()
+class ComicVineCharactersItems {
+  @JsonKey(name: 'api_detail_url')
+  final String? apiDetailUrl;
+
+  @JsonKey(name: 'id')
+  final int? id;
+
+  @JsonKey(name: 'name')
+  final String? name;
+
+  @JsonKey(name: 'site_detail_url')
+  final String? siteDetailUrl;
+
+  @JsonKey(name: 'image')
+  final ComicVineImage? image;
+
+  ComicVineCharactersItems(
+      this.apiDetailUrl, this.id, this.name, this.siteDetailUrl, this.image);
+
+  factory ComicVineCharactersItems.fromJson(Map<String, dynamic> json) =>
+      _$ComicVineCharactersItemsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ComicVineCharactersItemsToJson(this);
+}
 
 // https://comicvine.gamespot.com/api/character/4005-{id}/?api_key=8b4409f69ab868bcc3cbbe34dd52b3e19db555fd&format=json&field_list=image,name,description,real_name,aliases,publisher,creators,gender,birth
 @JsonSerializable()
@@ -537,7 +609,8 @@ class ComicVineCharacter {
   @JsonKey(name: 'real_name')
   final String? realName;
 
-  ComicVineCharacter(this.aliases, this.birth, this.creators, this.description, this.gender, this.image, this.name, this.publisher, this.realName);
+  ComicVineCharacter(this.aliases, this.birth, this.creators, this.description,
+      this.gender, this.image, this.name, this.publisher, this.realName);
 
   factory ComicVineCharacter.fromJson(Map<String, dynamic> json) =>
       _$ComicVineCharacterFromJson(json);
@@ -578,7 +651,17 @@ class ComicVineImage {
   @JsonKey(name: 'image_tags')
   final String? tags;
 
-  ComicVineImage(this.smallUrl, this.mediumUrl, this.originalUrl, this.iconUrl, this.screenUrl, this.screenLargeUrl, this.superUrl, this.thumbUrl, this.tinyUrl, this.tags);
+  ComicVineImage(
+      this.smallUrl,
+      this.mediumUrl,
+      this.originalUrl,
+      this.iconUrl,
+      this.screenUrl,
+      this.screenLargeUrl,
+      this.superUrl,
+      this.thumbUrl,
+      this.tinyUrl,
+      this.tags);
 
   factory ComicVineImage.fromJson(Map<String, dynamic> json) =>
       _$ComicVineImageFromJson(json);
@@ -601,7 +684,8 @@ class ComicVineCharactersItem {
   @JsonKey(name: 'site_detail_url')
   final String? siteDetailUrl;
 
-  ComicVineCharactersItem(this.apiDetailUrl, this.id, this.name, this.siteDetailUrl);
+  ComicVineCharactersItem(
+      this.apiDetailUrl, this.id, this.name, this.siteDetailUrl);
 
   factory ComicVineCharactersItem.fromJson(Map<String, dynamic> json) =>
       _$ComicVineCharactersItemFromJson(json);
@@ -627,7 +711,8 @@ class ComicVinePersonsItem {
   @JsonKey(name: 'role')
   final String? role;
 
-  ComicVinePersonsItem(this.apiDetailUrl, this.id, this.name, this.siteDetailUrl, this.role);
+  ComicVinePersonsItem(
+      this.apiDetailUrl, this.id, this.name, this.siteDetailUrl, this.role);
 
   factory ComicVinePersonsItem.fromJson(Map<String, dynamic> json) =>
       _$ComicVinePersonsItemFromJson(json);

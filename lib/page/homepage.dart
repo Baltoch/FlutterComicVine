@@ -11,6 +11,7 @@ import 'package:fluttercomicvine/utils/bloc/currentpageindex.dart';
 import 'package:fluttercomicvine/utils/bloc/issues.dart';
 import 'package:fluttercomicvine/utils/bloc/movies.dart';
 import 'package:fluttercomicvine/utils/bloc/serieslist.dart';
+import 'package:fluttercomicvine/utils/bloc/characters.dart';
 import 'package:fluttercomicvine/widget/searchbar.dart';
 import 'package:fluttercomicvine/widget/slider.dart';
 import 'package:fluttercomicvine/widget/navbar.dart';
@@ -460,6 +461,10 @@ class _Search extends StatelessWidget {
                           create: (context) => ComicVineSeriesListBloc()
                             ..add(QueryComicVineSeriesListEvent(5,
                                 query: state.query))),
+                      BlocProvider<ComicVineCharactersBloc>(
+                          create: (context) => ComicVineCharactersBloc()
+                            ..add(QueryComicVineCharactersEvent(5,
+                                query: state.query))),
                     ],
                     child: Builder(builder: (context) {
                       final stateIssues =
@@ -468,22 +473,26 @@ class _Search extends StatelessWidget {
                           context.watch<ComicVineMoviesBloc>().state;
                       final stateSeriesList =
                           context.watch<ComicVineSeriesListBloc>().state;
+                      final stateCharacters =
+                          context.watch<ComicVineCharactersBloc>().state;
 
                       if (stateIssues is LoadingComicVineIssuesState ||
                           stateMovies is LoadingComicVineMoviesState ||
-                          stateSeriesList is LoadingComicVineSeriesListState) {
+                          stateSeriesList is LoadingComicVineSeriesListState ||
+                          stateCharacters is LoadingComicVineCharactersState) {
                         return Container(
                           alignment: Alignment.center,
                           child: const CircularProgressIndicator(),
                         );
                       } else if (stateIssues is ErrorComicVineIssuesState ||
                           stateMovies is ErrorComicVineMoviesState ||
-                          stateSeriesList is ErrorComicVineSeriesListState) {
+                          stateSeriesList is ErrorComicVineSeriesListState ||
+                          stateCharacters is ErrorComicVineCharactersState) {
                         return Container(
                           alignment: Alignment.center,
                           padding: const EdgeInsets.all(16),
                           child: Text(
-                            '${stateIssues is ErrorComicVineIssuesState ? "${stateIssues.message} " : ""}${stateMovies is ErrorComicVineMoviesState ? "${stateMovies.message} " : ""}${stateSeriesList is ErrorComicVineSeriesListState ? "${stateSeriesList.message} " : ""}',
+                            '${stateIssues is ErrorComicVineIssuesState ? "${stateIssues.message} " : ""}${stateMovies is ErrorComicVineMoviesState ? "${stateMovies.message} " : ""}${stateSeriesList is ErrorComicVineSeriesListState ? "${stateSeriesList.message} " : ""}${stateCharacters is ErrorComicVineCharactersState ? "${stateCharacters.message} " : ""}',
                             style: const TextStyle(
                               color: AppColors.white,
                             ),
@@ -588,7 +597,38 @@ class _Search extends StatelessWidget {
                                     );
                                   }
                                 }),
-                                const SizedBox(height: 16)
+                                const SizedBox(height: 16),
+                                BlocBuilder<ComicVineCharactersBloc,
+                                        ComicVineCharactersState>(
+                                    builder: (context, state) {
+                                  if (state is LoadedComicVineCharactersState) {
+                                    return CardSlider(
+                                      onSeeMoreClick: () => (),
+                                      hasButton: false,
+                                      title: "Personnages",
+                                      cardList: state.characters
+                                          .map((e) => CardTemplate(
+                                              imagePath:
+                                                  e.image?.smallUrl ?? '',
+                                              description: e.name ?? '',
+                                              onClick: (event) => context
+                                                  .go('/character/${e.id}')))
+                                          .toList(),
+                                    );
+                                  } else if (state
+                                      is EmptyComicVineCharactersState) {
+                                    return const SizedBox(
+                                      height: 0,
+                                      width: 0,
+                                    );
+                                  } else {
+                                    return Container(
+                                      alignment: Alignment.center,
+                                      child: const CircularProgressIndicator(),
+                                    );
+                                  }
+                                }),
+                                const SizedBox(height: 16),
                               ],
                             )));
                       }

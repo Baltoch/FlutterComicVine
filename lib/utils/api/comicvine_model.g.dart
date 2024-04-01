@@ -422,6 +422,45 @@ Map<String, dynamic> _$ComicVinePersonToJson(ComicVinePerson instance) =>
       'website': instance.website,
     };
 
+ComicVineCharactersResponse _$ComicVineCharactersResponseFromJson(
+        Map<String, dynamic> json) =>
+    ComicVineCharactersResponse(
+      (json['results'] as List<dynamic>)
+          .map((e) =>
+              ComicVineCharactersItems.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['status_code'] as int?,
+    );
+
+Map<String, dynamic> _$ComicVineCharactersResponseToJson(
+        ComicVineCharactersResponse instance) =>
+    <String, dynamic>{
+      'results': instance.results,
+      'status_code': instance.statusCode,
+    };
+
+ComicVineCharactersItems _$ComicVineCharactersItemsFromJson(
+        Map<String, dynamic> json) =>
+    ComicVineCharactersItems(
+      json['api_detail_url'] as String?,
+      json['id'] as int?,
+      json['name'] as String?,
+      json['site_detail_url'] as String?,
+      json['image'] == null
+          ? null
+          : ComicVineImage.fromJson(json['image'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ComicVineCharactersItemsToJson(
+        ComicVineCharactersItems instance) =>
+    <String, dynamic>{
+      'api_detail_url': instance.apiDetailUrl,
+      'id': instance.id,
+      'name': instance.name,
+      'site_detail_url': instance.siteDetailUrl,
+      'image': instance.image,
+    };
+
 ComicVineCharacterResponse _$ComicVineCharacterResponseFromJson(
         Map<String, dynamic> json) =>
     ComicVineCharacterResponse(
