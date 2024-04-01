@@ -58,7 +58,7 @@ class PersonDetailsPage extends StatelessWidget {
                               state.person.gender == 1 ? 'Masculin' : 'Feminin'
                             ]),
                             Information(
-                                title: 'Dattes de naissance',
+                                title: 'Date de naissance',
                                 description: [state.person.birth ?? '']),
                             Information(
                                 title: 'Décès',
