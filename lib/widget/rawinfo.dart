@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_time_patterns.dart';
+import 'package:intl/intl.dart';
 import '../utils/appcolors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
@@ -38,7 +40,7 @@ class RawInfo extends StatelessWidget {
       Expanded(
           flex: 2,
           child: Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.only(left: 15, top: 12),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,71 +51,70 @@ class RawInfo extends StatelessWidget {
                   children: [
                     if (nomLivre != null) ...[
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(children: [
-                              Text(
-                                nomLivre!,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontFamily: 'Nunito',
-                                    fontStyle: FontStyle.italic),
-                              )
-                            ]),
-                          ],
-                        ),
-                      )
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Text(
+                            nomLivre ?? '',
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontFamily: 'Nunito',
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.italic),
+                          )),
                     ],
                     if (edition != null) ...[
-                      Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: SvgPicture.asset(
-                            AppVectorialImages.icPublisherBicolor,
-                            height: 20,
-                            colorFilter: const ColorFilter.mode(
-                                AppColors.white, BlendMode.srcIn),
-                          ),
-                        ),
-                        Text(
-                          edition!,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontFamily: 'Nunito',
-                          ),
-                        )
-                      ]),
+                      Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Row(children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: SvgPicture.asset(
+                                AppVectorialImages.icPublisherBicolor,
+                                height: 15,
+                                colorFilter: const ColorFilter.mode(
+                                    AppColors.white, BlendMode.srcIn),
+                              ),
+                            ),
+                            Text(
+                              edition ?? '',
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ])),
                     ],
                     if (nbEpisodes != null) ...[
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 5),
-                            child: SvgPicture.asset(
-                              AppVectorialImages.icTvBicolor,
-                              height: 20,
-                              colorFilter: const ColorFilter.mode(
-                                  AppColors.white, BlendMode.srcIn),
-                            ),
-                          ),
-                          Text(
-                            '$nbEpisodes',
-                            style: const TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 17,
-                              fontFamily: 'Nunito',
-                            ),
-                          )
-                        ],
-                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5),
+                                child: SvgPicture.asset(
+                                  AppVectorialImages.icTvBicolor,
+                                  height: 15,
+                                  colorFilter: const ColorFilter.mode(
+                                      AppColors.white, BlendMode.srcIn),
+                                ),
+                              ),
+                              Text(
+                                nbEpisodes == null
+                                    ? ''
+                                    : '$nbEpisodes épisodes',
+                                style: const TextStyle(
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    fontSize: 11,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w400),
+                              )
+                            ],
+                          )),
                     ],
                     if (numeroLivre != null) ...[
                       Padding(
-                          padding: const EdgeInsets.only(bottom: 5),
+                          padding: const EdgeInsets.only(bottom: 10),
                           child: Row(
                             children: [
                               Padding(
@@ -126,18 +127,19 @@ class RawInfo extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                numeroLivre!,
+                                numeroLivre == null ? '' : 'N° $numeroLivre',
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 17,
-                                    fontFamily: 'Nunito'),
+                                    fontSize: 11,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w400),
                               )
                             ],
                           ))
                     ],
                     if (duree != null) ...[
                       Padding(
-                          padding: const EdgeInsets.only(bottom: 5),
+                          padding: const EdgeInsets.only(bottom: 10),
                           child: Row(
                             children: [
                               Padding(
@@ -150,36 +152,39 @@ class RawInfo extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                duree!,
+                                duree == null ? '' : '$duree minutes',
                                 style: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 17,
-                                    fontFamily: 'Nunito'),
+                                    fontSize: 11,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w400),
                               )
                             ],
                           ))
                     ],
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 5),
-                          child: SvgPicture.asset(
-                            AppVectorialImages.icCalendarBicolor,
-                            height: 21,
-                            colorFilter: const ColorFilter.mode(
-                                AppColors.white, BlendMode.srcIn),
-                          ),
-                        ),
-                        Text(
-                          date,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontFamily: 'Nunito',
-                          ),
-                        )
-                      ],
-                    )
+                    Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 5),
+                              child: SvgPicture.asset(
+                                AppVectorialImages.icCalendarBicolor,
+                                height: 16,
+                                colorFilter: const ColorFilter.mode(
+                                    AppColors.white, BlendMode.srcIn),
+                              ),
+                            ),
+                            Text(
+                              date,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontFamily: 'Nunito',
+                                  fontWeight: FontWeight.w400),
+                            )
+                          ],
+                        ))
                   ],
                 ),
               ],
