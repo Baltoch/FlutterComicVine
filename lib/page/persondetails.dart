@@ -39,31 +39,17 @@ class PersonDetailsPage extends StatelessWidget {
                           'Infos'
                         ], content: <Widget>[
                           Story(description: state.person.description ?? ''),
-                          SingleChildScrollView(
-                              child: Expanded(
-                                  child: Column(children: <Information>[
-                            Information(
-                                title: 'Nom',
-                                description: [state.person.name ?? '']),
-                            Information(
-                                title: 'Alias',
-                                description: [state.person.aliases ?? '']),
-                            Information(
-                                title: 'Site web',
-                                description: [state.person.website ?? '']),
-                            Information(
-                                title: 'Pays',
-                                description: [state.person.country ?? '']),
-                            Information(title: 'Genre', description: [
+                          Information(data: {
+                            'Nom': [state.person.name ?? ''],
+                            'Alias': [state.person.aliases ?? ''],
+                            'Site web': [state.person.website ?? ''],
+                            'Pays': [state.person.country ?? ''],
+                            'Genre': [
                               state.person.gender == 1 ? 'Masculin' : 'Feminin'
-                            ]),
-                            Information(
-                                title: 'Date de naissance',
-                                description: [state.person.birth ?? '']),
-                            Information(
-                                title: 'Décès',
-                                description: [state.person.death?.date ?? '']),
-                          ])))
+                            ],
+                            'Date de naissance': [state.person.birth ?? ''],
+                            'Décès': [state.person.death?.date ?? ''],
+                          }),
                         ]),
                       ),
                     ],

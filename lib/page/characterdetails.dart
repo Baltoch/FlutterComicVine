@@ -39,34 +39,22 @@ class CharacterDetailsPage extends StatelessWidget {
                           'Infos'
                         ], content: <Widget>[
                           Story(description: state.character.description ?? ''),
-                          SingleChildScrollView(
-                              child: Expanded(
-                                  child: Column(children: <Information>[
-                            Information(
-                                title: 'Nom du super-héros',
-                                description: [state.character.name ?? '']),
-                            Information(
-                                title: 'Nom réel',
-                                description: [state.character.name ?? '']),
-                            Information(
-                                title: 'Alias',
-                                description: [state.character.aliases ?? '']),
-                            Information(title: 'Editeur', description: [
-                              state.character.publisher?.name ?? ''
-                            ]),
-                            Information(
-                                title: 'Créateurs',
-                                description: state.character.creators == null
-                                    ? []
-                                    : state.character.creators!
-                                        .map((e) => e.name ?? '')
-                                        .toList()),
-                            Information(title: 'Genre', description: [
+                          Information(data: {
+                            'Nom du super-héros': [state.character.name ?? ''],
+                            'Nom réel': [state.character.name ?? ''],
+                            'Alias': [state.character.aliases ?? ''],
+                            'Editeur': [state.character.publisher?.name ?? ''],
+                            'Créateurs': state.character.creators == null
+                                ? []
+                                : state.character.creators!
+                                    .map((e) => e.name ?? '')
+                                    .toList(),
+                            'Genre': [
                               state.character.gender == 1
                                   ? 'Masculin'
                                   : 'Feminin'
-                            ]),
-                          ])))
+                            ],
+                          })
                         ]),
                       ),
                     ],

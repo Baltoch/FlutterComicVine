@@ -94,50 +94,36 @@ class MovieDetailsPage extends StatelessWidget {
                                   .toList(),
                             ),
                           )),
-                          SingleChildScrollView(
-                              child: Expanded(
-                                  child: Column(children: <Information>[
-                            Information(
-                                title: 'Classification',
-                                description: [state.movie.rating!]),
-                            Information(
-                                title: 'Réalisateur',
-                                description: state.movie.producers == null
-                                    ? []
-                                    : state.movie.producers!
-                                        .map((e) => e.name ?? '')
-                                        .toList()),
-                            Information(
-                                title: 'Scénaristes',
-                                description: state.movie.writers == null
-                                    ? []
-                                    : state.movie.writers!
-                                        .map((e) => e.name ?? '')
-                                        .toList()),
-                            Information(
-                                title: 'Producteurs',
-                                description: state.movie.producers == null
-                                    ? []
-                                    : state.movie.producers!
-                                        .map((e) => e.name ?? '')
-                                        .toList()),
-                            Information(
-                                title: 'Studios',
-                                description: state.movie.studios == null
-                                    ? []
-                                    : state.movie.studios!
-                                        .map((e) => e.name ?? '')
-                                        .toList()),
-                            Information(
-                                title: 'Budget',
-                                description: [state.movie.budget!]),
-                            Information(
-                                title: 'Recettes au box-office',
-                                description: [state.movie.boxOfficeRevenue!]),
-                            Information(
-                                title: 'Recettes brutes totales',
-                                description: [state.movie.totalRevenue!]),
-                          ])))
+                          Information(data: {
+                            'Classification': [state.movie.rating!],
+                            'Réalisateur': state.movie.producers == null
+                                ? []
+                                : state.movie.producers!
+                                    .map((e) => e.name ?? '')
+                                    .toList(),
+                            'Scénaristes': state.movie.writers == null
+                                ? []
+                                : state.movie.writers!
+                                    .map((e) => e.name ?? '')
+                                    .toList(),
+                            'Producteurs': state.movie.producers == null
+                                ? []
+                                : state.movie.producers!
+                                    .map((e) => e.name ?? '')
+                                    .toList(),
+                            'Studios': state.movie.studios == null
+                                ? []
+                                : state.movie.studios!
+                                    .map((e) => e.name ?? '')
+                                    .toList(),
+                            'Budget': [state.movie.budget!],
+                            'Recettes au box-office': [
+                              state.movie.boxOfficeRevenue!
+                            ],
+                            'Recettes brutes totales': [
+                              state.movie.totalRevenue!
+                            ]
+                          })
                         ]),
                       ),
                     ],
