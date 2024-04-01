@@ -9,6 +9,8 @@ class QuerySearchEvent extends SearchEvent {
   QuerySearchEvent({required this.query});
 }
 
+class ChangedSearchEvent extends SearchEvent {}
+
 // States
 abstract class SearchState {}
 
@@ -30,11 +32,18 @@ class ErrorSearchState extends SearchState {
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(EmptySearchState()) {
     on<QuerySearchEvent>((event, emit) async {
-      emit(EmptySearchState());
       try {
+        emit(EmptySearchState());
         emit(QuerySearchState(event.query));
-      } 
-      catch (e) {
+      } catch (e) {
+        emit(ErrorSearchState(e.toString()));
+      }
+    });
+
+    on<ChangedSearchEvent>((event, emit) async {
+      try {
+        emit(EmptySearchState());
+      } catch (e) {
         emit(ErrorSearchState(e.toString()));
       }
     });
