@@ -13,7 +13,8 @@ abstract class ComicVineAPI {
   Future<ComicVineIssuesResponse> loadIssues(
     {@Query('field_list') String? fieldList='id,name,image,volume,issue_number,cover_date',
     @Query('limit') int? limit=5,
-    @Query('offset') int? offset=0}
+    @Query('offset') int? offset=0,
+    @Query('filter') String? filter}
   );
 
   // https://comicvine.gamespot.com/api/issue/4000-{id}?api_key=8b4409f69ab868bcc3cbbe34dd52b3e19db555fd&format=json&field_list=name,image,volume,issue_number,cover_date,description,person_credits,character_credits
@@ -28,7 +29,8 @@ abstract class ComicVineAPI {
   Future<ComicVineMoviesResponse> loadMovies(
     {@Query('field_list') String? fieldList='id,image,runtime,date_added,api_detail_url,name',
     @Query('limit') int? limit=5,
-    @Query('offset') int? offset=0}
+    @Query('offset') int? offset=0,
+    @Query('filter') String? filter}
   );
 
   // https://comicvine.gamespot.com/api/movie/4025-{id}/?api_key=8b4409f69ab868bcc3cbbe34dd52b3e19db555fd&format=json&field_list=name,image,runtime,date_added,description,characters,rating,writers,producers,studios,budget,box_office_revenue,total_revenue
@@ -43,7 +45,8 @@ abstract class ComicVineAPI {
   Future<ComicVineSeriesListResponse> loadSeriesList(
     {@Query('field_list') String? fieldList='id,name,image,publisher,count_of_episodes,start_year',
     @Query('limit') int? limit=5,
-    @Query('offset') int? offset=0}
+    @Query('offset') int? offset=0,
+    @Query('filter') String? filter}
   );
 
   // https://comicvine.gamespot.com/api/series/4075-{id}/?api_key=8b4409f69ab868bcc3cbbe34dd52b3e19db555fd&format=json&field_list=name,image,publisher,count_of_episodes,start_year,description,characters,episodes
@@ -105,6 +108,15 @@ class ComicVineRequests {
     }
   }
 
+  Future<ComicVineIssuesResponse> filterIssues({String? filter, int? limit}) {
+    try {
+      return _api.loadIssues(limit: limit, filter: filter==null?null:'name:$filter');
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   Future<ComicVineIssueResponse> getIssue(int id) {
     try {
       return _api.loadIssue(id);
@@ -124,6 +136,15 @@ class ComicVineRequests {
     }
   }
 
+  Future<ComicVineMoviesResponse> filterMovies({String? filter, int? limit}) {
+    try {
+      return _api.loadMovies(limit: limit, filter: filter==null?null:'name:$filter');
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   Future<ComicVineMovieResponse> getMovie(int id) {
     try {
       return _api.loadMovie(id);
@@ -137,6 +158,15 @@ class ComicVineRequests {
   Future<ComicVineSeriesListResponse> getSeriesList(int limit) {
     try {
       return _api.loadSeriesList(limit: limit);
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<ComicVineSeriesListResponse> filterSeriesList({String? filter, int? limit}) {
+    try {
+      return _api.loadSeriesList(limit: limit, filter: filter==null?null:'name:$filter');
     } catch (e) {
       print(e);
       rethrow;

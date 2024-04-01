@@ -23,12 +23,14 @@ class _ComicVineAPI implements ComicVineAPI {
     String? fieldList = 'id,name,image,volume,issue_number,cover_date',
     int? limit = 5,
     int? offset = 0,
+    String? filter,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'field_list': fieldList,
       r'limit': limit,
       r'offset': offset,
+      r'filter': filter,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -83,12 +85,14 @@ class _ComicVineAPI implements ComicVineAPI {
     String? fieldList = 'id,image,runtime,date_added,api_detail_url,name',
     int? limit = 5,
     int? offset = 0,
+    String? filter,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'field_list': fieldList,
       r'limit': limit,
       r'offset': offset,
+      r'filter': filter,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
@@ -143,12 +147,14 @@ class _ComicVineAPI implements ComicVineAPI {
     String? fieldList = 'id,name,image,publisher,count_of_episodes,start_year',
     int? limit = 5,
     int? offset = 0,
+    String? filter,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'field_list': fieldList,
       r'limit': limit,
       r'offset': offset,
+      r'filter': filter,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};

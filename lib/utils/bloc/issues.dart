@@ -11,11 +11,19 @@ class LoadComicVineIssuesEvent extends ComicVineIssuesEvent {
   LoadComicVineIssuesEvent(this.limit);
 }
 
+class QueryComicVineIssuesEvent extends ComicVineIssuesEvent {
+  final int? limit;
+  final String? query; 
+
+  QueryComicVineIssuesEvent(this.limit, {this.query});
+}
 
 // States
 abstract class ComicVineIssuesState {}
 
 class LoadingComicVineIssuesState extends ComicVineIssuesState {}
+
+class EmptyComicVineIssuesState extends ComicVineIssuesState {}
 
 class LoadedComicVineIssuesState extends ComicVineIssuesState {
   final List<ComicVineIssuesItem> issues;
@@ -42,6 +50,21 @@ class ComicVineIssuesBloc extends Bloc<ComicVineIssuesEvent, ComicVineIssuesStat
       }
       catch (e) {
         emit(ErrorComicVineIssuesState('Failed to load issues: $e'));
+      }
+    });
+    on<QueryComicVineIssuesEvent>((event, emit) async {
+      emit(LoadingComicVineIssuesState());
+      try {
+        final issues = await _comicVineRequests.filterIssues(limit: event.limit, filter: event.query);
+        if(issues.results.isEmpty) {
+          emit(EmptyComicVineIssuesState());
+        }
+        else {
+          emit(LoadedComicVineIssuesState(issues.results));
+        }
+      } 
+      catch (e) {
+        emit(ErrorComicVineIssuesState('Failed to query issues: $e'));
       }
     });
   }

@@ -11,11 +11,20 @@ class LoadComicVineMoviesEvent extends ComicVineMoviesEvent {
   LoadComicVineMoviesEvent(this.limit);
 }
 
+class QueryComicVineMoviesEvent extends ComicVineMoviesEvent {
+  final int? limit;
+  final String? query; 
+
+  QueryComicVineMoviesEvent(this.limit, {this.query});
+}
+
 
 // States
 abstract class ComicVineMoviesState {}
 
 class LoadingComicVineMoviesState extends ComicVineMoviesState {}
+
+class EmptyComicVineMoviesState extends ComicVineMoviesState {}
 
 class LoadedComicVineMoviesState extends ComicVineMoviesState {
   final List<ComicVineMoviesItem> movies;
@@ -42,6 +51,21 @@ class ComicVineMoviesBloc extends Bloc<ComicVineMoviesEvent, ComicVineMoviesStat
       } 
       catch (e) {
         emit(ErrorComicVineMoviesState('Failed to load movies: $e'));
+      }
+    });
+    on<QueryComicVineMoviesEvent>((event, emit) async {
+      emit(LoadingComicVineMoviesState());
+      try {
+        final movies = await _comicVineRequests.filterMovies(limit: event.limit, filter: event.query);
+        if(movies.results.isEmpty) {
+          emit(EmptyComicVineMoviesState());
+        }
+        else {
+          emit(LoadedComicVineMoviesState(movies.results));
+        }
+      } 
+      catch (e) {
+        emit(ErrorComicVineMoviesState('Failed to query movies: $e'));
       }
     });
   }
