@@ -34,7 +34,7 @@ class _ComicVineAPI implements ComicVineAPI {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineIssuesResponse>(Options(
       method: 'GET',
@@ -62,7 +62,7 @@ class _ComicVineAPI implements ComicVineAPI {
     final queryParameters = <String, dynamic>{r'field_list': fieldList};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineIssueResponse>(Options(
       method: 'GET',
@@ -96,7 +96,7 @@ class _ComicVineAPI implements ComicVineAPI {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineMoviesResponse>(Options(
       method: 'GET',
@@ -124,7 +124,7 @@ class _ComicVineAPI implements ComicVineAPI {
     final queryParameters = <String, dynamic>{r'field_list': fieldList};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineMovieResponse>(Options(
       method: 'GET',
@@ -158,7 +158,7 @@ class _ComicVineAPI implements ComicVineAPI {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineSeriesListResponse>(Options(
       method: 'GET',
@@ -186,7 +186,7 @@ class _ComicVineAPI implements ComicVineAPI {
     final queryParameters = <String, dynamic>{r'field_list': fieldList};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineSeriesResponse>(Options(
       method: 'GET',
@@ -213,7 +213,7 @@ class _ComicVineAPI implements ComicVineAPI {
     final queryParameters = <String, dynamic>{r'field_list': fieldList};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineEpisodeResponse>(Options(
       method: 'GET',
@@ -241,7 +241,7 @@ class _ComicVineAPI implements ComicVineAPI {
     final queryParameters = <String, dynamic>{r'field_list': fieldList};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVinePersonResponse>(Options(
       method: 'GET',
@@ -269,7 +269,7 @@ class _ComicVineAPI implements ComicVineAPI {
     final queryParameters = <String, dynamic>{r'field_list': fieldList};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ComicVineCharacterResponse>(Options(
       method: 'GET',

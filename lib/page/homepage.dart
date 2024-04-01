@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,29 +41,29 @@ class HomePage extends StatelessWidget {
 class _HomePageBody extends StatelessWidget {
   final int currentPageIndex;
 
-  _HomePageBody({super.key, required this.currentPageIndex});
+  const _HomePageBody({required this.currentPageIndex});
 
   @override
   Widget build(BuildContext context) {
     switch(currentPageIndex) {
       case 0:
-        return _Home();
+        return const _Home();
       case 1:
-        return _Comics();
+        return const _Comics();
       case 2:
-        return _Series();
+        return const _Series();
       case 3:
-        return _Movies();
+        return const _Movies();
       case 4:
-        return _Search();
+        return const _Search();
       default:
-        return Placeholder();
+        return const Placeholder();
     }
   }
 }
 
 class _Home extends StatelessWidget {
-  const _Home({super.key});
+  const _Home();
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +178,7 @@ class _Home extends StatelessWidget {
 }
 
 class _Comics extends StatelessWidget {
-  const _Comics({super.key});
+  const _Comics();
 
   @override
   Widget build(BuildContext context) {
@@ -248,7 +246,7 @@ class _Comics extends StatelessWidget {
 }
 
 class _Series extends StatelessWidget {
-  const _Series({super.key});
+  const _Series();
 
   @override
   Widget build(BuildContext context) {
@@ -316,7 +314,7 @@ class _Series extends StatelessWidget {
 }
 
 class _Movies extends StatelessWidget {
-  const _Movies({super.key});
+  const _Movies();
 
   @override
   Widget build(BuildContext context) {
@@ -383,7 +381,7 @@ class _Movies extends StatelessWidget {
 }
 
 class _Search extends StatelessWidget {
-  const _Search({super.key});
+  const _Search();
 
  @override
   Widget build(BuildContext context) {

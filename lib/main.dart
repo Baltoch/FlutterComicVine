@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import 'utils/api/comicvine_model.dart';
-import 'utils/api/comicvine_api.dart';
-import 'utils/bloc/episode.dart';
 import 'utils/appcolors.dart';
 import 'page/homepage.dart';
 import 'page/issuedetails.dart';

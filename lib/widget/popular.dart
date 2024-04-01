@@ -39,7 +39,6 @@ class Popular extends StatelessWidget {
           children: [
             Container(
               height: 200,
-              width: 500,
               decoration: BoxDecoration(
                 color: AppColors.section,
                 borderRadius: BorderRadius.circular(30),
@@ -114,10 +113,10 @@ class Popular extends StatelessWidget {
                                         Row(
                                           children: [
                                             Padding (
-                                              padding: EdgeInsets.only(right: 5),
+                                              padding: const EdgeInsets.only(right: 5),
                                               child : SvgPicture.asset(
                                               AppVectorialImages.icPublisherBicolor,
-                                              colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                              colorFilter: const ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
                                               ),),                                     
                                             Text(
                                               edition!,
@@ -138,10 +137,10 @@ class Popular extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Padding (
-                                              padding: EdgeInsets.only(right: 5),
+                                              padding: const EdgeInsets.only(right: 5),
                                               child : SvgPicture.asset(
                                               AppVectorialImages.icTvBicolor,
-                                              colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                              colorFilter: const ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
                                               ),),
                                         Text(
                                           nbEpisodes!,
@@ -161,11 +160,11 @@ class Popular extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Padding (
-                                          padding: EdgeInsets.only(right: 5),
+                                          padding: const EdgeInsets.only(right: 5),
                                           child : SvgPicture.asset(
                                           AppVectorialImages.icBooksBicolor,
                                           height: 20,
-                                          colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                          colorFilter: const ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
                                           ),),
                                         Text(
                                           numeroLivre!,
@@ -185,11 +184,11 @@ class Popular extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Padding (
-                                          padding: EdgeInsets.only(right: 5),
+                                          padding: const EdgeInsets.only(right: 5),
                                           child : SvgPicture.asset(
                                           AppVectorialImages.icMovieBicolor,
                                           height: 18,
-                                          colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                          colorFilter: const ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
                                           ),),
                                         Text(
                                           duree!,
@@ -206,11 +205,11 @@ class Popular extends StatelessWidget {
                                 Row(
                                   children: [
                                     Padding (
-                                      padding: EdgeInsets.only(right: 5),
+                                      padding: const EdgeInsets.only(right: 5),
                                       child : SvgPicture.asset(
                                       AppVectorialImages.icCalendarBicolor,
                                       height: 21,
-                                      colorFilter: ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
+                                      colorFilter: const ColorFilter.mode(AppColors.white50, BlendMode.srcIn),   
                                       ),),
                                     Text(
                                       date,

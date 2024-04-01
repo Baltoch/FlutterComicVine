@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttercomicvine/main.dart';
 import '../utils/appcolors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttercomicvine/svg/app_vectorial_images.dart';
@@ -77,11 +76,11 @@ class RawInfo extends StatelessWidget {
                         if (edition != null) ...[
                           Row(children: [
                             Padding (
-                              padding: EdgeInsets.only(right: 5),
+                              padding: const EdgeInsets.only(right: 5),
                               child : SvgPicture.asset(
                               AppVectorialImages.icPublisherBicolor,
                               height: 20,
-                              colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                              colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
                               ),),
                             Text(
                               edition!,
@@ -97,11 +96,11 @@ class RawInfo extends StatelessWidget {
                           Row(
                             children: [
                               Padding (
-                                padding: EdgeInsets.only(right: 5),
+                                padding: const EdgeInsets.only(right: 5),
                                 child : SvgPicture.asset(
                                 AppVectorialImages.icTvBicolor,
                                 height: 20,
-                                colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                                colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
                                 ),),
                               Text(
                                 '$nbEpisodes',
@@ -120,11 +119,11 @@ class RawInfo extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Padding (
-                                    padding: EdgeInsets.only(right: 5),
+                                    padding: const EdgeInsets.only(right: 5),
                                     child : SvgPicture.asset(
                                     AppVectorialImages.icBooksBicolor,
                                     height: 20,
-                                    colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                                    colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
                                     ),),
                                   Text(
                                     numeroLivre!,
@@ -142,11 +141,11 @@ class RawInfo extends StatelessWidget {
                               child: Row(
                                 children: [
                                   Padding (
-                                    padding: EdgeInsets.only(right: 5),
+                                    padding: const EdgeInsets.only(right: 5),
                                     child : SvgPicture.asset(
                                     AppVectorialImages.icMovieBicolor,
                                     height: 20,
-                                    colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                                    colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
                                     ),),
                                   Text(
                                     duree!,
@@ -161,11 +160,11 @@ class RawInfo extends StatelessWidget {
                         Row(
                           children: [
                             Padding (
-                              padding: EdgeInsets.only(right: 5),
+                              padding: const EdgeInsets.only(right: 5),
                               child : SvgPicture.asset(
                               AppVectorialImages.icCalendarBicolor,
                               height: 21,
-                              colorFilter: ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
+                              colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),   
                               ),),
                             Text(
                               date,

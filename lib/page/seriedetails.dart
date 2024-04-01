@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttercomicvine/utils/bloc/series.dart';
-import 'package:fluttercomicvine/utils/bloc/person.dart';
 import 'package:fluttercomicvine/utils/bloc/episode.dart';
 import 'package:fluttercomicvine/widget/episode.dart';
 import 'package:go_router/go_router.dart';

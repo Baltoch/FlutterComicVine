@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:retrofit/retrofit.dart';
 import './comicvine_model.dart';
 
@@ -103,7 +104,9 @@ class ComicVineRequests {
     try {
       return _api.loadIssues(limit: limit);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -112,7 +115,9 @@ class ComicVineRequests {
     try {
       return _api.loadIssues(limit: limit, filter: filter==null?null:'name:$filter');
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -121,7 +126,9 @@ class ComicVineRequests {
     try {
       return _api.loadIssue(id);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -131,7 +138,9 @@ class ComicVineRequests {
     try {
       return _api.loadMovies(limit: limit);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -140,7 +149,9 @@ class ComicVineRequests {
     try {
       return _api.loadMovies(limit: limit, filter: filter==null?null:'name:$filter');
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -149,7 +160,9 @@ class ComicVineRequests {
     try {
       return _api.loadMovie(id);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -159,7 +172,9 @@ class ComicVineRequests {
     try {
       return _api.loadSeriesList(limit: limit);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -168,7 +183,9 @@ class ComicVineRequests {
     try {
       return _api.loadSeriesList(limit: limit, filter: filter==null?null:'name:$filter');
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -177,7 +194,9 @@ class ComicVineRequests {
     try {
       return _api.loadSeries(id);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -187,7 +206,9 @@ class ComicVineRequests {
     try {
       return _api.loadEpisode(id);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -197,7 +218,9 @@ class ComicVineRequests {
     try {
       return _api.loadPerson(id);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
@@ -207,7 +230,9 @@ class ComicVineRequests {
     try {
       return _api.loadCharacter(id);
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       rethrow;
     }
   }
