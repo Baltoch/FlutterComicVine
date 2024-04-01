@@ -42,7 +42,7 @@ class SerieDetailsPage extends StatelessWidget {
                         child: RawInfo(
                             date: state.series.startYear!,
                             imageURL: state.series.image?.smallUrl ?? '',
-                            nomLivre: state.series.name,
+                            edition: state.series.publisher?.name,
                             nbEpisodes: state.series.countOfEpisodes!),
                       ),
                       Expanded(
