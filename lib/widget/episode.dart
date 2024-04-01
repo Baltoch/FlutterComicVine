@@ -17,7 +17,6 @@ class Episode extends StatelessWidget {
       child: Center(
         child: Container(
           height: 200,
-          width: 500,
           decoration: BoxDecoration(
             color: AppColors.blueBlue,
             borderRadius: BorderRadius.circular(30),
@@ -137,7 +136,6 @@ class _EpisodeSkeletonState extends State<EpisodeSkeleton> with SingleTickerProv
           return Center(
             child: Container(
               height: 200,
-              width: 500,
               decoration: BoxDecoration(
                 color: _colorTween.value,
                 borderRadius: BorderRadius.circular(30),
